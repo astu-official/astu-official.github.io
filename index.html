@@ -11,19 +11,14 @@
             /* Light Mode Colors */
             --light-bg: #f8f5f0;
             --light-text: #2c3e50;
-            --light-accent: #8d6e63; /* Earthy brown */
-            --light-secondary: #2e7d32; /* Forest green */
+            --light-accent: #8d6e63;
+            --light-secondary: #2e7d32;
             
             /* Dark Mode Colors */
-            --dark-bg: #0d1f0d; /* Deep green */
+            --dark-bg: #0d1f0d;
             --dark-text: #ecf0f1;
-            --dark-accent: #2ecc71; /* Vibrant green */
-            --dark-secondary: #27ae60; /* Darker green */
-            
-            /* Earth Tones */
-            --earth-brown: #8d6e63;
-            --forest-green: #2e7d32;
-            --mountain-gray: #546e7a;
+            --dark-accent: #2ecc71;
+            --dark-secondary: #27ae60;
             
             /* Animation */
             --transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -48,7 +43,11 @@
             background-color: var(--dark-bg);
             color: var(--dark-text);
         }
-
+ img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -213,13 +212,14 @@
         }
 
         /* Hero Section */
-        .hero {
-            height: 100vh;
+       .hero {
+            min-height: 100vh;
+            height: auto;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
-            padding-top: 80px;
+            padding: 120px 20px 80px;
             background: linear-gradient(to bottom, rgba(248, 245, 240, 0.8), rgba(248, 245, 240, 0.6)), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
         }
 
@@ -249,6 +249,26 @@
             margin: 0 auto;
             position: relative;
             z-index: 1;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 30px;
+            border: 4px solid var(--light-accent);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        body.dark-mode .profile-image {
+            border-color: var(--dark-accent);
         }
 
         .hero-subtitle {
@@ -348,7 +368,7 @@
             color: var(--dark-accent);
         }
 
-        /* Enhanced Journey Section */
+        /* Journey Section */
         .journey {
             padding: 120px 0;
             position: relative;
@@ -655,82 +675,6 @@
             font-size: 16px;
         }
 
-        /* Future Vision Section */
-        .future-vision {
-            padding: 120px 0;
-            background: linear-gradient(to bottom, rgba(142, 110, 99, 0.1), rgba(46, 125, 50, 0.1));
-            position: relative;
-            overflow: hidden;
-        }
-
-        body.dark-mode .future-vision {
-            background: linear-gradient(to bottom, rgba(13, 31, 13, 0.8), rgba(39, 174, 96, 0.2));
-        }
-
-        .vision-container {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .vision-item {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
-            padding: 40px;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            position: relative;
-            transition: var(--transition);
-        }
-
-        body.dark-mode .vision-item {
-            background: rgba(26, 42, 26, 0.9);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .vision-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .vision-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            color: var(--light-accent);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-        }
-
-        body.dark-mode .vision-title {
-            color: var(--dark-accent);
-        }
-
-        .vision-title i {
-            margin-right: 15px;
-        }
-
-        .vision-desc {
-            font-size: 18px;
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-
-        .vision-status {
-            display: inline-block;
-            padding: 8px 20px;
-            background: rgba(142, 110, 99, 0.1);
-            color: var(--light-accent);
-            border-radius: 30px;
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        body.dark-mode .vision-status {
-            background: rgba(46, 204, 113, 0.1);
-            color: var(--dark-accent);
-        }
-
         /* Gallery Section */
         .gallery {
             padding: 120px 0;
@@ -901,6 +845,82 @@
         }
 
         body.dark-mode .project-status {
+            background: rgba(46, 204, 113, 0.1);
+            color: var(--dark-accent);
+        }
+
+        /* Future Vision Section */
+        .future-vision {
+            padding: 120px 0;
+            background: linear-gradient(to bottom, rgba(142, 110, 99, 0.1), rgba(46, 125, 50, 0.1));
+            position: relative;
+            overflow: hidden;
+        }
+
+        body.dark-mode .future-vision {
+            background: linear-gradient(to bottom, rgba(13, 31, 13, 0.8), rgba(39, 174, 96, 0.2));
+        }
+
+        .vision-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .vision-item {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .vision-item {
+            background: rgba(26, 42, 26, 0.9);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .vision-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .vision-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: var(--light-accent);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        body.dark-mode .vision-title {
+            color: var(--dark-accent);
+        }
+
+        .vision-title i {
+            margin-right: 15px;
+        }
+
+        .vision-desc {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .vision-status {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(142, 110, 99, 0.1);
+            color: var(--light-accent);
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        body.dark-mode .vision-status {
             background: rgba(46, 204, 113, 0.1);
             color: var(--dark-accent);
         }
@@ -1111,7 +1131,7 @@
         /* Footer */
         footer {
             padding: 80px 0 40px;
-            background: linear-gradient(to bottom, var(--forest-green), #1b5e20);
+            background: linear-gradient(to bottom, var(--light-secondary), #1b5e20);
             text-align: center;
             color: white;
         }
@@ -1138,7 +1158,7 @@
 
         .social-link:hover {
             background: white;
-            color: var(--forest-green);
+            color: var(--light-secondary);
             transform: translateY(-5px);
         }
 
@@ -1353,6 +1373,11 @@
         <div class="breathing-mountains"></div>
         <div class="container">
             <div class="hero-content">
+                <!-- Your Profile Picture -->
+                <div class="profile-image">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Roshan Adhikari">
+                </div>
+                
                 <div class="hero-subtitle">On Top of the World, Yet Rooted</div>
                 <h1 class="hero-title">Roshan Adhikari</h1>
                 <h2 class="hero-highlight">"Namaste. I am Roshan — a yogi, seeker, artist, creator, and climber of both mountains and mind. I walk the path of conscious living through nature, breath, code, and community."</h2>
@@ -1724,7 +1749,7 @@
                     </div>
                     <div style="margin-top: 30px;">
                         <h4 style="margin-bottom: 15px;">Free Digital Gift:</h4>
-                        <a href="#" class="btn" style="background: white; color: var(--forest-green);">
+                        <a href="#" class="btn" style="background: white; color: var(--light-secondary);">
                             <i class="fas fa-download"></i> Download "From Earth to Everest" E-book
                         </a>
                     </div>
