@@ -1129,20 +1129,20 @@
         }
 
         /* Footer */
-        footer {
+       footer {
             padding: 80px 0 40px;
             background: linear-gradient(to bottom, var(--light-secondary), #1b5e20);
             text-align: center;
             color: white;
         }
-
+        
         .social-links {
             display: flex;
             justify-content: center;
             gap: 25px;
             margin-bottom: 40px;
         }
-
+        
         .social-link {
             width: 60px;
             height: 60px;
@@ -1155,13 +1155,13 @@
             font-size: 24px;
             transition: var(--transition);
         }
-
+        
         .social-link:hover {
             background: white;
             color: var(--light-secondary);
             transform: translateY(-5px);
         }
-
+        
         .footer-nav {
             display: flex;
             justify-content: center;
@@ -1169,22 +1169,22 @@
             gap: 30px;
             margin-bottom: 40px;
         }
-
+        
         .footer-nav a {
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             transition: var(--transition);
         }
-
+        
         .footer-nav a:hover {
             color: white;
         }
-
+        
         .copyright {
             color: rgba(255, 255, 255, 0.7);
             margin-top: 40px;
         }
-
+        
         .mandala-loader {
             position: fixed;
             top: 0;
@@ -1199,18 +1199,18 @@
             opacity: 1;
             transition: opacity 1s ease;
         }
-
+        
         body.dark-mode .mandala-loader {
             background: var(--dark-bg);
         }
-
+        
         .mandala {
             width: 100px;
             height: 100px;
             position: relative;
             animation: rotate 20s linear infinite;
         }
-
+        
         .mandala-circle {
             position: absolute;
             top: 0;
@@ -1222,11 +1222,11 @@
             opacity: 0.7;
             animation: pulse 4s ease-in-out infinite;
         }
-
+        
         body.dark-mode .mandala-circle {
             border-color: var(--dark-accent);
         }
-
+        
         .mandala-circle:nth-child(2) {
             width: 80%;
             height: 80%;
@@ -1234,7 +1234,7 @@
             left: 10%;
             animation-delay: -1s;
         }
-
+        
         .mandala-circle:nth-child(3) {
             width: 60%;
             height: 60%;
@@ -1242,7 +1242,7 @@
             left: 20%;
             animation-delay: -2s;
         }
-
+        
         .mandala-circle:nth-child(4) {
             width: 40%;
             height: 40%;
@@ -1250,17 +1250,42 @@
             left: 30%;
             animation-delay: -3s;
         }
-
+        
         @keyframes rotate {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-
+        
         @keyframes pulse {
             0%, 100% { transform: scale(1); opacity: 0.7; }
             50% { transform: scale(1.1); opacity: 1; }
         }
-
+        
+        /* SSL Status Indicator */
+        .ssl-status {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            border-radius: 30px;
+            background-color: #ff6b6b;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .ssl-status.secure {
+            background-color: #2ecc71;
+        }
+        
+        .ssl-status i {
+            font-size: 20px;
+        }
+        
         /* Responsive Design */
         @media (max-width: 992px) {
             .contact-container {
@@ -1283,7 +1308,7 @@
                 right: auto;
             }
         }
-
+        
         @media (max-width: 768px) {
             nav ul {
                 display: none;
@@ -1296,36 +1321,47 @@
                 padding: 20px 0;
                 box-shadow: 0 10px 30px rgba(2, 12, 27, 0.1);
             }
-
+        
             body.dark-mode nav ul {
                 background-color: var(--dark-bg);
                 box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             }
-
+        
             nav ul.show {
                 display: flex;
             }
-
+        
             nav ul li {
                 margin: 15px 0;
                 text-align: center;
             }
-
+        
             .mobile-menu {
                 display: block;
             }
-
+        
             .language-switcher {
                 display: none;
             }
-
+        
             .hero-title {
                 font-size: clamp(36px, 8vw, 60px);
+            }
+            
+            .ssl-status {
+                bottom: 10px;
+                right: 10px;
+                font-size: 14px;
             }
         }
     </style>
 </head>
 <body>
+     <!-- SSL Status Indicator -->
+    <div class="ssl-status" id="ssl-status">
+        <i class="fas fa-lock"></i>
+        <span>Connection Not Secure</span>
+    </div>
     <!-- Mandala Loader -->
     <div class="mandala-loader" id="mandala-loader">
         <div class="mandala">
@@ -1788,6 +1824,34 @@
             </div>
         </div>
     </footer>
+<div class="container">
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-spotify"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+            </div>
+
+            <div class="footer-nav">
+                <a href="#journey">The Journey</a>
+                <a href="#values">Values</a>
+                <a href="#gallery">Art & Lens</a>
+                <a href="#projects">Projects</a>
+                <a href="#vision">Vision</a>
+                <a href="#manifesto">Manifesto</a>
+                <a href="#">Blog</a>
+                <a href="#">Podcast</a>
+                <a href="#">Retreats</a>
+            </div>
+
+            <div class="copyright">
+                &copy; 2023 Roshan Adhikari | Summit Journey. All rights reserved.<br>
+                "The climb is tough, but the view from the top lasts forever."<br>
+                Domain: roshanadhikari2004.com.np
+            </div>
+        </div>
+    </footer>
 
     <script>
         // Mandala loader
@@ -1903,6 +1967,23 @@
                 }
             });
         });
+
+        // SSL status indicator
+        const sslStatus = document.getElementById('ssl-status');
+        
+        // Check if the page is loaded over HTTPS
+        if (window.location.protocol === 'https:') {
+            sslStatus.classList.add('secure');
+            sslStatus.innerHTML = '<i class="fas fa-lock"></i> <span>Connection Secured</span>';
+        } else {
+            // Show a warning for non-HTTPS connections
+            sslStatus.innerHTML = '<i class="fas fa-unlock"></i> <span>Connection Not Secure</span>';
+            
+            // Add click event to show instructions
+            sslStatus.addEventListener('click', () => {
+                alert('Your connection is not secure. Please contact support for help with SSL configuration.');
+            });
+        }
     </script>
 </body>
 </html>
