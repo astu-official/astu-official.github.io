@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roshan Adhikari | Conscious Journey</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Light Mode Colors */
+            --light-bg: #f8f5f0;
+            --light-text: #2c3e50;
+            --light-accent: #8d6e63;
+            --light-secondary: #2e7d32;
+            
+            /* Dark Mode Colors */
+            --dark-bg: #0d1f0d;
+            --dark-text: #ecf0f1;
+            --dark-accent: #2ecc71;
+            --dark-secondary: #27ae60;
+            
+            /* Animation */
+            --transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--light-text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            transition: var(--transition);
+        }
+
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+ img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background-color: rgba(248, 245, 240, 0.9);
+            transition: var(--transition);
+        }
+
+        body.dark-mode header {
+            background-color: rgba(13, 31, 13, 0.9);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--light-accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        body.dark-mode .logo {
+            color: var(--dark-accent);
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        body.dark-mode nav ul li a {
+            color: var(--dark-text);
+        }
+
+        nav ul li a:hover {
+            color: var(--light-accent);
+        }
+
+        body.dark-mode nav ul li a:hover {
+            color: var(--dark-accent);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--light-accent);
+            transition: var(--transition);
+        }
+
+        body.dark-mode nav ul li a::after {
+            background-color: var(--dark-accent);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+            color: var(--light-accent);
+            font-size: 24px;
+        }
+
+        body.dark-mode .mobile-menu {
+            color: var(--dark-accent);
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            color: var(--light-text);
+            cursor: pointer;
+            font-size: 14px;
+            padding: 5px;
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .lang-btn {
+            color: var(--dark-text);
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            opacity: 1;
+            color: var(--light-accent);
+        }
+
+        body.dark-mode .lang-btn:hover, 
+        body.dark-mode .lang-btn.active {
+            color: var(--dark-accent);
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            font-size: 20px;
+            color: var(--light-text);
+            transition: var(--transition);
+        }
+
+        body.dark-mode .theme-toggle {
+            color: var(--dark-text);
+        }
+
+        .theme-toggle:hover {
+            color: var(--light-accent);
+            transform: rotate(15deg);
+        }
+
+        body.dark-mode .theme-toggle:hover {
+            color: var(--dark-accent);
+        }
+
+        /* Hero Section */
+       .hero {
+            min-height: 100vh;
+            height: auto;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 120px 20px 80px;
+            background: linear-gradient(to bottom, rgba(248, 245, 240, 0.8), rgba(248, 245, 240, 0.6)), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+        }
+
+        body.dark-mode .hero {
+            background: linear-gradient(to bottom, rgba(13, 31, 13, 0.8), rgba(13, 31, 13, 0.6)), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+        }
+
+        .breathing-mountains {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+            z-index: -1;
+            animation: breathe 12s infinite ease-in-out;
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 30px;
+            border: 4px solid var(--light-accent);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        body.dark-mode .profile-image {
+            border-color: var(--dark-accent);
+        }
+
+        .hero-subtitle {
+            color: var(--light-accent);
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        body.dark-mode .hero-subtitle {
+            color: var(--dark-accent);
+        }
+
+        .hero-title {
+            font-size: clamp(40px, 8vw, 80px);
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--light-text);
+            line-height: 1.1;
+            font-family: 'Playfair Display', serif;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        body.dark-mode .hero-title {
+            color: var(--dark-text);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero-highlight {
+            color: var(--light-text);
+            font-size: clamp(20px, 4vw, 32px);
+            margin-bottom: 40px;
+            font-weight: 300;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-style: italic;
+        }
+
+        body.dark-mode .hero-highlight {
+            color: var(--dark-text);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: transparent;
+            border: 2px solid var(--light-accent);
+            color: var(--light-accent);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: var(--transition);
+            cursor: pointer;
+            margin: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        body.dark-mode .btn {
+            border: 2px solid var(--dark-accent);
+            color: var(--dark-accent);
+        }
+
+        .btn:hover {
+            background-color: var(--light-accent);
+            color: var(--light-bg);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(142, 110, 99, 0.2);
+        }
+
+        body.dark-mode .btn:hover {
+            background-color: var(--dark-accent);
+            color: var(--dark-bg);
+            box-shadow: 0 10px 20px rgba(46, 204, 113, 0.2);
+        }
+
+        .btn-filled {
+            background-color: var(--light-accent);
+            color: var(--light-bg);
+        }
+
+        body.dark-mode .btn-filled {
+            background-color: var(--dark-accent);
+            color: var(--dark-bg);
+        }
+
+        .btn-filled:hover {
+            background-color: transparent;
+            color: var(--light-accent);
+        }
+
+        body.dark-mode .btn-filled:hover {
+            color: var(--dark-accent);
+        }
+
+        /* Journey Section */
+        .journey {
+            padding: 120px 0;
+            position: relative;
+            background-color: var(--light-bg);
+        }
+
+        body.dark-mode .journey {
+            background-color: var(--dark-bg);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--light-text);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        body.dark-mode .section-title {
+            color: var(--dark-text);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            height: 3px;
+            width: 100px;
+            background-color: var(--light-accent);
+            margin: 15px auto 0;
+        }
+
+        body.dark-mode .section-title::after {
+            background-color: var(--dark-accent);
+        }
+
+        .section-subtitle {
+            color: var(--light-accent);
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        body.dark-mode .section-subtitle {
+            color: var(--dark-accent);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--light-accent);
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+
+        body.dark-mode .timeline::before {
+            background: var(--dark-accent);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 80px;
+            width: 100%;
+            display: flex;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .timeline-item.expanded {
+            z-index: 100;
+        }
+
+        .timeline-item:nth-child(odd) {
+            justify-content: flex-start;
+            padding-right: 50%;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-end;
+            padding-left: 50%;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 90%;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .timeline-item.expanded .timeline-content {
+            transform: scale(1.05);
+            z-index: 10;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        body.dark-mode .timeline-content {
+            background: #1a2a1a;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        body.dark-mode .timeline-content:hover {
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+
+        .timeline-year {
+            position: absolute;
+            top: -30px;
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--light-accent);
+            background: var(--light-bg);
+            padding: 5px 15px;
+            border-radius: 30px;
+            border: 2px solid var(--light-accent);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .timeline-year:hover {
+            transform: scale(1.1);
+        }
+
+        body.dark-mode .timeline-year {
+            color: var(--dark-accent);
+            background: var(--dark-bg);
+            border: 2px solid var(--dark-accent);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-year {
+            right: -20px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-year {
+            left: -20px;
+        }
+
+        .chapter-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: var(--light-accent);
+            margin-bottom: 15px;
+        }
+
+        body.dark-mode .chapter-title {
+            color: var(--dark-accent);
+        }
+
+        .chapter-text {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .chapter-image {
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .chapter-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .chapter-image:hover img {
+            transform: scale(1.1);
+        }
+
+        .expanded-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.8s ease;
+            background: rgba(142, 110, 99, 0.05);
+            border-radius: 10px;
+            padding: 0 20px;
+        }
+
+        body.dark-mode .expanded-content {
+            background: rgba(46, 204, 113, 0.05);
+        }
+
+        .timeline-item.expanded .expanded-content {
+            max-height: 1000px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .expanded-content h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--light-accent);
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        body.dark-mode .expanded-content h4 {
+            color: var(--dark-accent);
+        }
+
+        .expanded-content p {
+            margin-bottom: 15px;
+        }
+
+        .expanded-content ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .expanded-content li {
+            margin-bottom: 8px;
+        }
+
+        /* Values Section */
+        .values {
+            padding: 100px 0;
+            background-color: rgba(142, 110, 99, 0.05);
+        }
+
+        body.dark-mode .values {
+            background-color: rgba(13, 31, 13, 0.5);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .value-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+            text-align: center;
+            padding: 40px 30px;
+        }
+
+        body.dark-mode .value-card {
+            background: #1a2a1a;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        body.dark-mode .value-card:hover {
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+
+        .value-icon {
+            font-size: 50px;
+            color: var(--light-accent);
+            margin-bottom: 20px;
+        }
+
+        body.dark-mode .value-icon {
+            color: var(--dark-accent);
+        }
+
+        .value-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: var(--light-accent);
+            margin-bottom: 15px;
+        }
+
+        body.dark-mode .value-title {
+            color: var(--dark-accent);
+        }
+
+        .value-desc {
+            font-size: 16px;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 120px 0;
+            background-color: var(--light-bg);
+            position: relative;
+        }
+
+        body.dark-mode .gallery {
+            background-color: var(--dark-bg);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        body.dark-mode .gallery-item {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        body.dark-mode .gallery-item:hover {
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-title {
+            color: white;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .gallery-category {
+            color: var(--light-accent);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        body.dark-mode .gallery-category {
+            color: var(--dark-accent);
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 120px 0;
+            background-color: var(--light-bg);
+        }
+
+        body.dark-mode .projects {
+            background-color: var(--dark-bg);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        body.dark-mode .project-card {
+            background: #1a2a1a;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        body.dark-mode .project-card:hover {
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+        }
+
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: var(--light-accent);
+            margin-bottom: 15px;
+        }
+
+        body.dark-mode .project-title {
+            color: var(--dark-accent);
+        }
+
+        .project-desc {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .project-status {
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(142, 110, 99, 0.1);
+            color: var(--light-accent);
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        body.dark-mode .project-status {
+            background: rgba(46, 204, 113, 0.1);
+            color: var(--dark-accent);
+        }
+
+        /* Future Vision Section */
+        .future-vision {
+            padding: 120px 0;
+            background: linear-gradient(to bottom, rgba(142, 110, 99, 0.1), rgba(46, 125, 50, 0.1));
+            position: relative;
+            overflow: hidden;
+        }
+
+        body.dark-mode .future-vision {
+            background: linear-gradient(to bottom, rgba(13, 31, 13, 0.8), rgba(39, 174, 96, 0.2));
+        }
+
+        .vision-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .vision-item {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .vision-item {
+            background: rgba(26, 42, 26, 0.9);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .vision-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .vision-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: var(--light-accent);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        body.dark-mode .vision-title {
+            color: var(--dark-accent);
+        }
+
+        .vision-title i {
+            margin-right: 15px;
+        }
+
+        .vision-desc {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .vision-status {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(142, 110, 99, 0.1);
+            color: var(--light-accent);
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        body.dark-mode .vision-status {
+            background: rgba(46, 204, 113, 0.1);
+            color: var(--dark-accent);
+        }
+
+        /* Manifesto Section */
+        .manifesto-section {
+            padding: 120px 0;
+            background: linear-gradient(to bottom, rgba(142, 110, 99, 0.1), rgba(46, 125, 50, 0.1));
+            text-align: center;
+            position: relative;
+        }
+
+        body.dark-mode .manifesto-section {
+            background: linear-gradient(to bottom, rgba(13, 31, 13, 0.8), rgba(39, 174, 96, 0.2));
+        }
+
+        .manifesto-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        body.dark-mode .manifesto-content {
+            background: rgba(26, 42, 26, 0.9);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .manifesto-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .manifesto-signature {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: var(--light-accent);
+            margin-top: 30px;
+        }
+
+        body.dark-mode .manifesto-signature {
+            color: var(--dark-accent);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 120px 0;
+            background-color: var(--light-bg);
+        }
+
+        body.dark-mode .contact {
+            background-color: var(--dark-bg);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        body.dark-mode .contact-form {
+            background: #1a2a1a;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .form-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: var(--light-accent);
+            margin-bottom: 30px;
+        }
+
+        body.dark-mode .form-title {
+            color: var(--dark-accent);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--light-text);
+            font-weight: 500;
+        }
+
+        body.dark-mode .form-group label {
+            color: var(--dark-text);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            background: rgba(248, 245, 240, 0.5);
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 5px;
+            color: var(--light-text);
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .form-control {
+            background: rgba(26, 42, 26, 0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--dark-text);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--light-accent);
+            box-shadow: 0 0 0 3px rgba(142, 110, 99, 0.2);
+        }
+
+        body.dark-mode .form-control:focus {
+            border-color: var(--dark-accent);
+            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .newsletter-box {
+            background: rgba(142, 110, 99, 0.1);
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        body.dark-mode .newsletter-box {
+            background: rgba(46, 204, 113, 0.1);
+        }
+
+        .newsletter-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: var(--light-accent);
+            margin-bottom: 20px;
+        }
+
+        body.dark-mode .newsletter-title {
+            color: var(--dark-accent);
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 15px 20px;
+            background: white;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 30px 0 0 30px;
+            color: var(--light-text);
+            font-size: 16px;
+        }
+
+        body.dark-mode .newsletter-input {
+            background: #1a2a1a;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--dark-text);
+        }
+
+        .newsletter-btn {
+            padding: 0 30px;
+            background: var(--light-accent);
+            color: white;
+            border: none;
+            border-radius: 0 30px 30px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .newsletter-btn {
+            background: var(--dark-accent);
+        }
+
+        .newsletter-btn:hover {
+            background: #6d4c41;
+        }
+
+        body.dark-mode .newsletter-btn:hover {
+            background: #27ae60;
+        }
+
+        /* Footer */
+        footer {
+            padding: 80px 0 40px;
+            background: linear-gradient(to bottom, var(--light-secondary), #1b5e20);
+            text-align: center;
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .social-link {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: white;
+            color: var(--light-secondary);
+            transform: translateY(-5px);
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-nav a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-nav a:hover {
+            color: white;
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 40px;
+        }
+
+        .mandala-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--light-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 1s ease;
+        }
+
+        body.dark-mode .mandala-loader {
+            background: var(--dark-bg);
+        }
+
+        .mandala {
+            width: 100px;
+            height: 100px;
+            position: relative;
+            animation: rotate 20s linear infinite;
+        }
+
+        .mandala-circle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--light-accent);
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        body.dark-mode .mandala-circle {
+            border-color: var(--dark-accent);
+        }
+
+        .mandala-circle:nth-child(2) {
+            width: 80%;
+            height: 80%;
+            top: 10%;
+            left: 10%;
+            animation-delay: -1s;
+        }
+
+        .mandala-circle:nth-child(3) {
+            width: 60%;
+            height: 60%;
+            top: 20%;
+            left: 20%;
+            animation-delay: -2s;
+        }
+
+        .mandala-circle:nth-child(4) {
+            width: 40%;
+            height: 40%;
+            top: 30%;
+            left: 30%;
+            animation-delay: -3s;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                padding: 0 0 0 70px;
+                justify-content: flex-start;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-year,
+            .timeline-item:nth-child(even) .timeline-year {
+                left: -20px;
+                right: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--light-bg);
+                flex-direction: column;
+                padding: 20px 0;
+                box-shadow: 0 10px 30px rgba(2, 12, 27, 0.1);
+            }
+
+            body.dark-mode nav ul {
+                background-color: var(--dark-bg);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 15px 0;
+                text-align: center;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .language-switcher {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: clamp(36px, 8vw, 60px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Mandala Loader -->
+    <div class="mandala-loader" id="mandala-loader">
+        <div class="mandala">
+            <div class="mandala-circle"></div>
+            <div class="mandala-circle"></div>
+            <div class="mandala-circle"></div>
+            <div class="mandala-circle"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo"><i class="fas fa-mountain"></i> Roshan Adhikari</a>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#journey">The Journey</a></li>
+                    <li><a href="#values">Values</a></li>
+                    <li><a href="#gallery">Art & Lens</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#vision">Vision</a></li>
+                    <li><a href="#manifesto">Manifesto</a></li>
+                    <li><a href="#contact">Connect</a></li>
+                </ul>
+            </nav>
+            <div class="header-controls">
+                <div class="language-switcher">
+                    <button class="lang-btn active">EN</button>
+                    <button class="lang-btn">NP</button>
+                    <button class="lang-btn">HI</button>
+                    <button class="lang-btn">JP</button>
+                </div>
+                <div class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="mobile-menu" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="breathing-mountains"></div>
+        <div class="container">
+            <div class="hero-content">
+                <!-- Your Profile Picture -->
+                <div class="profile-image">
+                    <img src="assets/images/profile.jpg"  alt="Roshan Adhikari">
+                </div>
+                
+                <div class="hero-subtitle">On Top of the World, Yet Rooted</div>
+                <h1 class="hero-title">Roshan Adhikari</h1>
+                <h2 class="hero-highlight">"Namaste. I am Roshan — a yogi, seeker, artist, creator, and climber of both mountains and mind. I walk the path of conscious living through nature, breath, code, and community."</h2>
+                <div class="hero-buttons">
+                    <a href="#journey" class="btn">Begin the Journey</a>
+                    <a href="#manifesto" class="btn btn-filled">Read My Manifesto</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Section -->
+    <section id="journey" class="journey">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">The Conscious Journey</h2>
+                <div class="section-subtitle">My path from the foothills to the peaks of consciousness</div>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2004-2015</div>
+                        <h3 class="chapter-title">Rooted in Himalayan Soil</h3>
+                        <div class="chapter-image">
+                            <img src="assets/images/rihs.jpg" alt="Nepal countryside">
+                        </div>
+                        <p class="chapter-text">My childhood in rural Nepal taught me the rhythms of nature and the wisdom of the earth. Growing up surrounded by mountains, I learned that true strength comes from stillness and connection to the land.</p>
+                        
+                        <div class="expanded-content">
+                            <h4>Key Learnings</h4>
+                            <ul>
+                                <li>Traditional farming practices passed down through generations</li>
+                                <li>Importance of community interdependence</li>
+                                <li>Respect for nature's cycles and seasons</li>
+                                <li>Foundation for my spiritual connection to the earth</li>
+                            </ul>
+                            <p>"The mountains taught me that growth comes from stillness, just as trees grow from solid roots."</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2015-2020</div>
+                        <h3 class="chapter-title">Trekking Beyond the Mind</h3>
+                        <div class="chapter-image">
+                            <img src="assets/images/tbtm.jpg" alt="Mountain trekking">
+                        </div>
+                        <p class="chapter-text">As I explored the Himalayas, I discovered that the greatest journeys are internal. Each step on the mountain became a step toward self-awareness, teaching me resilience and presence.</p>
+                        
+                        <div class="expanded-content">
+                            <h4>Spiritual Awakening</h4>
+                            <ul>
+                                <li>First exposure to yoga and meditation practices</li>
+                                <li>Multi-day treks that became moving meditations</li>
+                                <li>Learning from Himalayan yogis and spiritual guides</li>
+                                <li>Developing my "Karma Yogi" philosophy of selfless action</li>
+                            </ul>
+                            <p>"The mountain paths became my meditation cushions, the wind my mantra."</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2020-2024</div>
+                        <h3 class="chapter-title">Code & Karma</h3>
+                        <div class="chapter-image">
+                            <img src="assets/images/cak.jpg" alt="Coding and yoga">
+                        </div>
+                        <p class="chapter-text">Merging my technical skills with spiritual practice, I found harmony between the digital and natural worlds. Technology became a tool for connection rather than distraction.</p>
+                        
+                        <div class="expanded-content">
+                            <h4>Integration Phase</h4>
+                            <ul>
+                                <li>Studying management while deepening spiritual practice</li>
+                                <li>Learning coding as a form of meditation and creation</li>
+                                <li>Developing conscious technology principles</li>
+                                <li>Early experiments with hemp clothing and sustainable business</li>
+                            </ul>
+                            <p>"True innovation serves humanity without enslaving it to devices."</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2024-Present</div>
+                        <h3 class="chapter-title">Japan & Conscious Entrepreneurship</h3>
+                        <div class="chapter-image">
+                            <img src="assets/images/jace.jpg" alt="Meditation and farming">
+                        </div>
+                        <p class="chapter-text">Bringing my vision to Japan while deepening my commitment to conscious business, sustainable living, and spiritual practice.</p>
+                        
+                        <div class="expanded-content">
+                            <h4>Current Focus</h4>
+                            <ul>
+                                <li>Launching "Conscious Thread" hemp underwear brand</li>
+                                <li>Developing plans for Himalayan Homestay & Trekking</li>
+                                <li>Integrating Japanese minimalism with Nepali spirituality</li>
+                                <li>Building tools to combat digital addiction</li>
+                            </ul>
+                            <p>"My work serves my soul, rather than my soul serving work."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section id="values" class="values">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">My Guiding Principles</h2>
+                <div class="section-subtitle">The foundation of my Karma Yogi path</div>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 class="value-title">Seva (Selfless Service)</h3>
+                    <p class="value-desc">Work that serves humanity without expectation of reward. Creating value that uplifts communities and heals the planet.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="value-title">Ahimsa (Non-Violence)</h3>
+                    <p class="value-desc">Harmony with all living beings through conscious choices. Sustainable practices that honor the earth and its inhabitants.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3 class="value-title">Santosha (Contentment)</h3>
+                    <p class="value-desc">Finding abundance in simplicity. Rejecting consumerism and the myth of scarcity. Living fully with less.</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="value-title">Svadhyaya (Self-Study)</h3>
+                    <p class="value-desc">Continuous inner exploration through meditation, breathwork, and mindful living. Knowing myself to better serve others.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">The Art & Lens</h2>
+                <div class="section-subtitle">Capturing moments of truth through photography and art</div>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="assets/images/mwm.jpg" alt="Meditating with Mountains">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Meditating with Mountains</h3>
+                        <div class="gallery-category">Spiritual Journey</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="assets/images/his.jpg" alt="Hands in Soil">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Hands in Soil</h3>
+                        <div class="gallery-category">Organic Farming</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="assets/images/hh.jpg" alt="Himalayan Homestay">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Himalayan Homestay</h3>
+                        <div class="gallery-category">Community Living</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="assets/images/mc.jpg"alt="Mandala Creation">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Mandala Creation</h3>
+                        <div class="gallery-category">Sacred Art</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="assets/images/ms.jpg"alt="Mountain Sunrise">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Mountain Sunrise</h3>
+                        <div class="gallery-category">Landscape Photography</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="assets/images/yad.jpg" alt="Yoga at Dawn">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Yoga at Dawn</h3>
+                        <div class="gallery-category">Mindful Movement</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Conscious Projects</h2>
+                <div class="section-subtitle">Initiatives that merge sustainability, community, and innovation</div>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/images/tct.jpg"alt="Conscious Thread">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">The Conscious Thread</h3>
+                        <p class="project-desc">Sustainable hemp underwear combining traditional Nepali craftsmanship with eco-friendly materials.</p>
+                        <span class="project-status">Coming Soon</span>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/images/homestay.jpg" alt="Himalayan Homestay">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Himalayan Homestay</h3>
+                        <p class="project-desc">A sustainable retreat center offering authentic cultural experiences and mindful trekking adventures.</p>
+                        <span class="project-status">In Development</span>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/images/fnh.jpg"alt="Farm & Herbs">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Farm & Herbs</h3>
+                        <p class="project-desc">Biodynamic farming initiative preserving Himalayan medicinal plants and traditional healing knowledge.</p>
+                        <span class="project-status">Active</span>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/images/tff.jpg" alt="Tech for Freedom">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Tech for Freedom</h3>
+                        <p class="project-desc">Digital tools designed to promote mindful technology use and combat digital addiction.</p>
+                        <span class="project-status">Prototype Stage</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Vision Section -->
+    <section id="vision" class="future-vision">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">My Future Vision</h2>
+                <div class="section-subtitle">Building a conscious future through sustainable innovation</div>
+            </div>
+            
+            <div class="vision-container">
+                <div class="vision-item">
+                    <h3 class="vision-title"><i class="fas fa-tshirt"></i> Conscious Clothing Empire</h3>
+                    <p class="vision-desc">Expanding my hemp clothing line beyond underwear to create a full range of sustainable apparel. Partnering with Nepali artisans to preserve traditional techniques while creating modern designs that promote conscious consumption.</p>
+                    <span class="vision-status">Phase 1: Underwear Launch</span>
+                </div>
+                
+                <div class="vision-item">
+                    <h3 class="vision-title"><i class="fas fa-hiking"></i> Himalayan Experience Center</h3>
+                    <p class="vision-desc">Creating a network of eco-friendly homestays along lesser-known trekking routes in Nepal. These centers will offer authentic cultural experiences, yoga retreats, and opportunities for travelers to participate in local sustainability projects.</p>
+                    <span class="vision-status">Site Selection Phase</span>
+                </div>
+                
+                <div class="vision-item">
+                    <h3 class="vision-title"><i class="fas fa-seedling"></i> Healing Herb Conservatory</h3>
+                    <p class="vision-desc">Establishing a sanctuary for preserving and cultivating endangered Himalayan medicinal plants. Partnering with local healers and modern researchers to document traditional knowledge and create accessible natural remedies.</p>
+                    <span class="vision-status">Research Phase</span>
+                </div>
+                
+                <div class="vision-item">
+                    <h3 class="vision-title"><i class="fas fa-mobile-alt"></i> Digital Freedom Movement</h3>
+                    <p class="vision-desc">Developing apps and platforms that promote mindful technology use. Creating tools that help people break free from social media addiction and reclaim their attention for meaningful pursuits and real-world connections.</p>
+                    <span class="vision-status">Concept Development</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manifesto Section -->
+    <section id="manifesto" class="manifesto-section">
+        <div class="container">
+            <div class="manifesto-content">
+                <h2 class="section-title">My Manifesto</h2>
+                <p class="manifesto-text">"I walk lightly. I eat with my hands. I breathe deeply.<br>
+                I build systems that awaken — not control.<br>
+                I believe the Earth is alive. The body is a temple.<br>
+                Work should serve the soul, not enslave it.<br>
+                Technology must connect us to nature, not separate us.<br>
+                True wealth is measured in relationships, not rupees.<br>
+                The highest summit is self-knowledge.<br>
+                The most important journey is inward."</p>
+                <div class="manifesto-signature">Roshan Adhikari</div>
+                <a href="#" class="btn btn-filled" style="margin-top: 30px;">Join the Journey</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Connect With Me</h2>
+                <div class="section-subtitle">Let's create conscious change together</div>
+            </div>
+
+            <div class="contact-container">
+                <div class="contact-form">
+                    <h3 class="form-title">Send a Message</h3>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" class="form-control">
+                            <option value="">Select a topic</option>
+                            <option value="collab">Collaboration</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="wisdom">Wisdom Sharing</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-filled" style="width: 100%;">Send Message</button>
+                </div>
+
+                <div class="newsletter-box">
+                    <h3 class="newsletter-title">Join the Summit Journal</h3>
+                    <p>Receive monthly inspirations, exclusive content, and updates on conscious living</p>
+                    <div class="newsletter-form">
+                        <input type="email" class="newsletter-input" placeholder="Your email address">
+                        <button class="newsletter-btn">Subscribe</button>
+                    </div>
+                    <div style="margin-top: 30px;">
+                        <h4 style="margin-bottom: 15px;">Free Digital Gift:</h4>
+                        <a href="#" class="btn" style="background: white; color: var(--light-secondary);">
+                            <i class="fas fa-download"></i> Download "From Earth to Everest" E-book
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-spotify"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+            </div>
+
+            <div class="footer-nav">
+                <a href="#journey">The Journey</a>
+                <a href="#values">Values</a>
+                <a href="#gallery">Art & Lens</a>
+                <a href="#projects">Projects</a>
+                <a href="#vision">Vision</a>
+                <a href="#manifesto">Manifesto</a>
+                <a href="#">Blog</a>
+                <a href="#">Podcast</a>
+                <a href="#">Retreats</a>
+            </div>
+
+            <div class="copyright">
+                &copy; 2023 Roshan Adhikari | Summit Journey. All rights reserved.<br>
+                "The climb is tough, but the view from the top lasts forever."<br>
+                Domain: roshanadhikari2004.com.np
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mandala loader
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('mandala-loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 1000);
+            }, 2000);
+        });
+
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+            
+            if (body.classList.contains('dark-mode')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+
+        // Set initial theme
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show');
+            });
+        });
+
+        // Language switcher
+        document.querySelectorAll('.lang-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.lang-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                button.classList.add('active');
+                
+                // In a real implementation, this would load the translated content
+                alert('Language switched to ' + button.textContent);
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Header effect on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Timeline expansion functionality
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        
+        timelineItems.forEach(item => {
+            const yearBtn = item.querySelector('.timeline-year');
+            const content = item.querySelector('.expanded-content');
+            
+            yearBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                // Close other expanded items
+                timelineItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('expanded');
+                    }
+                });
+                
+                // Toggle this item
+                item.classList.toggle('expanded');
+            });
+            
+            // Close when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!item.contains(e.target)) {
+                    item.classList.remove('expanded');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
