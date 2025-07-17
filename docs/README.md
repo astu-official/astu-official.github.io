@@ -58,24 +58,6 @@ A modern, professional portfolio website showcasing Roshan Adhikari's conscious 
 └── package.json            # Dependencies and scripts
 ```
 
-## 🚀 Getting Started
-
-### Development
-
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
-```
-
 ### Key Features to Test
 
 1. **Search Functionality**: Use the search bar in the header to find content
@@ -84,40 +66,6 @@ npm run preview
 4. **Theme Toggle**: Switch between light and dark modes
 5. **Mobile Experience**: Test on mobile devices for touch interactions
 
-## 🔧 Configuration
-
-### Analytics Setup
-
-Replace `GA_MEASUREMENT_ID` in `index.html` with your Google Analytics ID:
-
-```javascript
-gtag("config", "YOUR_GA_MEASUREMENT_ID");
-```
-
-### Form Integration
-
-Update form action URLs in the contact form for your backend:
-
-```html
-<form action="https://formspree.io/f/YOUR_FORM_ID" method="POST"></form>
-```
-
-### Content Management
-
-Content can be easily updated by:
-
-1. Editing HTML directly for immediate changes
-2. Integrating with a headless CMS (Contentful/Strapi) using the CMS module
-3. Using the built-in content management interface (when implemented)
-
-## 📊 Performance Metrics
-
-The enhanced website achieves:
-
-- **Lighthouse Score**: 90+ across all categories
-- **Core Web Vitals**: Optimized LCP, FID, and CLS
-- **Load Time**: < 2 seconds on 3G connections
-- **Accessibility**: WCAG 2.1 AA compliant
 
 ## 🔮 Future Enhancements
 
@@ -140,15 +88,6 @@ The enhanced website achieves:
 - [ ] Performance monitoring
 - [ ] Error tracking integration
 
-## 🤝 Contributing
-
-To continue development:
-
-1. Review the implementation plan in `.kiro/specs/advanced-portfolio-enhancement/tasks.md`
-2. Pick the next task to implement
-3. Follow the modular architecture established
-4. Test thoroughly across devices and browsers
-5. Update documentation
 
 ## 📝 Notes
 
