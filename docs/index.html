@@ -4,6 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roshan Adhikari | Conscious Journey</title>
+    
+    <!-- Enhanced Mandala Loader Styles -->
+    <style>
+        /* Beautiful Mandala Loader */
+        .mandala-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--light-bg), var(--light-accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        
+        body.dark-mode .mandala-loader {
+            background: linear-gradient(135deg, var(--dark-bg), var(--dark-accent));
+        }
+        
+        .mandala {
+            width: 120px;
+            height: 120px;
+            position: relative;
+            animation: mandalaRotate 3s linear infinite;
+        }
+        
+        .mandala-circle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 3px solid transparent;
+            border-top: 3px solid var(--light-accent);
+            border-radius: 50%;
+            animation: mandalaSpin 1.5s linear infinite;
+        }
+        
+        body.dark-mode .mandala-circle {
+            border-top: 3px solid var(--dark-accent);
+        }
+        
+        .mandala-circle:nth-child(2) {
+            width: 80%;
+            height: 80%;
+            top: 10%;
+            left: 10%;
+            border-top: 3px solid var(--light-secondary);
+            animation-duration: 2s;
+            animation-direction: reverse;
+        }
+        
+        body.dark-mode .mandala-circle:nth-child(2) {
+            border-top: 3px solid var(--dark-secondary);
+        }
+        
+        .mandala-circle:nth-child(3) {
+            width: 60%;
+            height: 60%;
+            top: 20%;
+            left: 20%;
+            border-top: 3px solid var(--light-accent);
+            animation-duration: 1s;
+        }
+        
+        @keyframes mandalaRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes mandalaSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loader-text {
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            color: var(--light-accent);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        body.dark-mode .loader-text {
+            color: var(--dark-accent);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+    </style>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
@@ -54,9 +151,9 @@
             padding: 0 20px;
         }
 
-        /* Header Styles */
+        /* Header Styles - Smaller and more compact */
         header {
-            padding: 20px 0;
+            padding: 12px 0;
             position: fixed;
             width: 100%;
             top: 0;
@@ -148,6 +245,509 @@
             display: flex;
             align-items: center;
             gap: 20px;
+        }
+
+
+
+        /* Enhanced Features Styles */
+        .loading-spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .form-message {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-message-success {
+            background: rgba(46, 204, 113, 0.1);
+            border: 1px solid var(--dark-accent);
+            color: var(--dark-accent);
+        }
+
+        .form-message-error {
+            background: rgba(231, 76, 60, 0.1);
+            border: 1px solid #e74c3c;
+            color: #e74c3c;
+        }
+
+        .field-error {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .form-control.error {
+            border-color: #e74c3c;
+            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.2);
+        }
+
+        .bookmark-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: var(--transition);
+            z-index: 10;
+        }
+
+        body.dark-mode .bookmark-btn {
+            background: rgba(0,0,0,0.7);
+        }
+
+        .bookmark-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .bookmark-btn.bookmarked {
+            background: var(--light-accent);
+            color: white;
+        }
+
+        body.dark-mode .bookmark-btn.bookmarked {
+            background: var(--dark-accent);
+            color: black;
+        }
+
+        .welcome-back-message {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--light-accent);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1500;
+            animation: slideInRight 0.5s ease-out;
+        }
+
+        body.dark-mode .welcome-back-message {
+            background: var(--dark-accent);
+            color: black;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .welcome-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .welcome-close {
+            background: none;
+            border: none;
+            color: inherit;
+            font-size: 18px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .thank-you-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+        }
+
+        .thank-you-content {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 400px;
+        }
+
+        body.dark-mode .thank-you-content {
+            background: #1a2a1a;
+        }
+
+        .thank-you-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .recommendations-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(142, 110, 99, 0.05);
+            border-radius: 10px;
+        }
+
+        body.dark-mode .recommendations-section {
+            background: rgba(46, 204, 113, 0.05);
+        }
+
+        .recommendations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .recommendation-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        body.dark-mode .recommendation-card {
+            background: #1a2a1a;
+        }
+
+        .recommendation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .rec-icon {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .rec-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--light-accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        body.dark-mode .rec-link {
+            color: var(--dark-accent);
+        }
+
+        /* Mobile Menu Styles */
+        nav.mobile-active {
+            display: block !important;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background: var(--light-bg);
+            z-index: 1500;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        body.dark-mode nav.mobile-active {
+            background: var(--dark-bg);
+        }
+
+        nav.mobile-active ul {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .mobile-menu.active i {
+            transform: rotate(90deg);
+        }
+
+        /* ADVANCED FEATURES - Particle Background System */
+        .particle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--light-accent);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        body.dark-mode .particle {
+            background: var(--dark-accent);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Advanced Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--light-accent), var(--light-secondary));
+            z-index: 9998;
+            transition: width 0.3s ease;
+        }
+
+        body.dark-mode .scroll-progress {
+            background: linear-gradient(90deg, var(--dark-accent), var(--dark-secondary));
+        }
+
+        /* Floating Action Button - Bottom Left */
+        .floating-nav {
+            position: fixed;
+            left: 30px;
+            bottom: 30px;
+            z-index: 1000;
+        }
+
+        .fab-main {
+            width: 60px;
+            height: 60px;
+            background: var(--light-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            transition: var(--transition);
+        }
+
+        body.dark-mode .fab-main {
+            background: var(--dark-accent);
+            color: black;
+        }
+
+        .fab-main:hover {
+            transform: scale(1.1) rotate(45deg);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+        }
+
+        .fab-menu {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .fab-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .fab-item {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-accent);
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        body.dark-mode .fab-item {
+            background: #1a2a1a;
+            color: var(--dark-accent);
+        }
+
+        .fab-item:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Advanced Timeline Enhancements */
+        .timeline::before {
+            background: linear-gradient(to bottom, var(--light-accent), var(--light-secondary));
+            animation: timelinePulse 3s ease-in-out infinite;
+        }
+
+        body.dark-mode .timeline::before {
+            background: linear-gradient(to bottom, var(--dark-accent), var(--dark-secondary));
+        }
+
+        @keyframes timelinePulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(142, 110, 99, 0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(142, 110, 99, 0); }
+        }
+
+
+
+        /* Advanced Form Enhancements */
+        .form-control {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .form-control input,
+        .form-control textarea,
+        .form-control select {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid rgba(0,0,0,0.1);
+            border-radius: 10px;
+            font-size: 16px;
+            transition: var(--transition);
+            background: rgba(255,255,255,0.9);
+        }
+
+        body.dark-mode .form-control input,
+        body.dark-mode .form-control textarea,
+        body.dark-mode .form-control select {
+            background: rgba(26, 42, 26, 0.9);
+            border-color: rgba(255,255,255,0.1);
+            color: var(--dark-text);
+        }
+
+        .form-control input:focus,
+        .form-control textarea:focus,
+        .form-control select:focus {
+            outline: none;
+            border-color: var(--light-accent);
+            box-shadow: 0 0 0 3px rgba(142, 110, 99, 0.2);
+            transform: translateY(-2px);
+        }
+
+        body.dark-mode .form-control input:focus,
+        body.dark-mode .form-control textarea:focus,
+        body.dark-mode .form-control select:focus {
+            border-color: var(--dark-accent);
+            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
+        }
+
+        /* Advanced Hover Effects with 3D Transforms */
+        .value-card,
+        .project-card,
+        .gallery-item {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .value-card:hover,
+        .project-card:hover {
+            transform: translateY(-15px) rotateX(5deg) rotateY(5deg);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        body.dark-mode .value-card:hover,
+        body.dark-mode .project-card:hover {
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+
+
+        /* Advanced Loading Animations */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        body.dark-mode .skeleton {
+            background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+            background-size: 200% 100%;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .header-controls {
+                gap: 10px;
+            }
+            
+            .welcome-back-message {
+                right: 10px;
+                left: 10px;
+                top: 80px;
+            }
+            
+            .recommendations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block !important;
+            }
+
+            .language-switcher {
+                display: none;
+            }
+
+            .floating-nav {
+                right: 20px;
+                bottom: 20px;
+            }
+
+            .fab-main {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+
+            .particle {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-menu {
+                display: none;
+            }
         }
 
         .mobile-menu {
@@ -252,13 +852,19 @@
         }
 
         .profile-image {
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             overflow: hidden;
             margin: 0 auto 30px;
             border: 4px solid var(--light-accent);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: var(--transition);
+        }
+        
+        .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
         }
 
         .profile-image img {
@@ -1362,6 +1968,12 @@
         <i class="fas fa-lock"></i>
         <span>Connection Not Secure</span>
     </div>
+    <!-- Advanced Scroll Progress Bar -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- Particle Background System -->
+    <div class="particle-container" id="particle-container"></div>
+
     <!-- Mandala Loader -->
     <div class="mandala-loader" id="mandala-loader">
         <div class="mandala">
@@ -1370,7 +1982,10 @@
             <div class="mandala-circle"></div>
             <div class="mandala-circle"></div>
         </div>
+        <div class="loader-text">Loading your conscious journey...</div>
     </div>
+
+
 
     <!-- Header -->
     <header>
@@ -1399,8 +2014,11 @@
                     <i class="fas fa-bars"></i>
                 </div>
             </div>
+            </div>
         </div>
     </header>
+
+
 
     <!-- Hero Section -->
     <section class="hero">
@@ -1409,8 +2027,8 @@
             <div class="hero-content">
                 <!-- Your Profile Picture -->
                 <div class="profile-image">
-                    <img src="assets/images/profile.jpg"  alt="Roshan Adhikari">
-                </div>
+                    <img src="assets/images/profile.jpg" alt="Roshan Adhikari" >
+</div>
                 
                 <div class="hero-subtitle">On Top of the World, Yet Rooted</div>
                 <h1 class="hero-title">Roshan Adhikari</h1>
@@ -1576,7 +2194,7 @@
             </div>
 
             <div class="gallery-grid">
-                <div class="gallery-item">
+                <div class="gallery-item" data-track="gallery_view" data-category="meditation">
                     <img src="assets/images/mwm.jpg" alt="Meditating with Mountains">
                     <div class="gallery-overlay">
                         <h3 class="gallery-title">Meditating with Mountains</h3>
@@ -1638,7 +2256,7 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="assets/images/tct.jpg"alt="Conscious Thread">
+                        <img src="assets/images/tct.jpg" class="lazy" alt="Conscious Thread" >
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">The Conscious Thread</h3>
@@ -1793,8 +2411,8 @@
     </section>
 
     <!-- Footer -->
-   
-    </footer>
+    <footer>
+
 <div class="container">
             <div class="social-links">
                 <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
@@ -1824,6 +2442,381 @@
         </div>
     </footer>
 
+    <!-- Floating Action Button Navigation -->
+    <div class="floating-nav">
+        <div class="fab-main" id="fab-main">
+            <i class="fas fa-plus"></i>
+        </div>
+        <div class="fab-menu" id="fab-menu">
+            <div class="fab-item" onclick="scrollToTop()" title="Back to Top">
+                <i class="fas fa-arrow-up"></i>
+            </div>
+            <div class="fab-item" onclick="scrollToSection('contact')" title="Contact">
+                <i class="fas fa-envelope"></i>
+            </div>
+            <div class="fab-item" onclick="scrollToSection('projects')" title="Projects">
+                <i class="fas fa-briefcase"></i>
+            </div>
+            <div class="fab-item" onclick="scrollToSection('journey')" title="Journey">
+                <i class="fas fa-mountain"></i>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Hide loader immediately - multiple approaches
+        document.addEventListener('DOMContentLoaded', function() {
+            const loader = document.getElementById('mandala-loader');
+            if (loader) {
+                loader.style.display = 'none';
+                loader.remove(); // Remove it completely
+                console.log('✅ Mandala loader removed');
+            }
+        });
+        
+        // Immediate execution - don't wait for DOM
+        setTimeout(function() {
+            const loader = document.getElementById('mandala-loader');
+            if (loader) {
+                loader.style.display = 'none';
+                console.log('✅ Mandala loader hidden by timeout');
+            }
+        }, 100);
+    </script>
+    
+    <!-- Enhanced Portfolio Features -->
+    <script>
+        // Enhanced Mandala Loader with smooth transitions
+        window.addEventListener('load', function() {
+            console.log('🚀 Page loaded, hiding mandala loader...');
+            const loader = document.getElementById('mandala-loader');
+            if (loader) {
+                setTimeout(() => {
+                    loader.style.opacity = '0';
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                        console.log('✅ Mandala loader hidden smoothly');
+                    }, 800); // Match the CSS transition duration
+                }, 1500); // Show loader for 1.5 seconds
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Enhanced Portfolio Features Loading...');
+            
+            // Theme toggle is handled separately below - no duplicate needed here
+            
+            // Enhanced mobile menu with animations
+            const mobileMenu = document.getElementById('mobile-menu');
+            const nav = document.querySelector('nav');
+            if (mobileMenu && nav) {
+                mobileMenu.addEventListener('click', function() {
+                    nav.classList.toggle('mobile-active');
+                    mobileMenu.classList.toggle('active');
+                    
+                    // Animate hamburger icon
+                    const icon = mobileMenu.querySelector('i');
+                    if (icon) {
+                        if (nav.classList.contains('mobile-active')) {
+                            icon.style.transform = 'rotate(90deg)';
+                        } else {
+                            icon.style.transform = 'rotate(0deg)';
+                        }
+                    }
+                });
+                
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!nav.contains(e.target) && !mobileMenu.contains(e.target)) {
+                        nav.classList.remove('mobile-active');
+                        mobileMenu.classList.remove('active');
+                        const icon = mobileMenu.querySelector('i');
+                        if (icon) icon.style.transform = 'rotate(0deg)';
+                    }
+                });
+            }
+            
+            // Enhanced smooth scrolling for navigation links
+            document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        
+                        // Close mobile menu if open
+                        if (nav && nav.classList.contains('mobile-active')) {
+                            nav.classList.remove('mobile-active');
+                            mobileMenu.classList.remove('active');
+                        }
+                    }
+                });
+            });
+            
+            // Enhanced timeline interactions
+            document.querySelectorAll('.timeline-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    this.classList.toggle('expanded');
+                    console.log('📖 Timeline item expanded');
+                });
+            });
+            
+            // Enhanced hover effects for cards
+            document.querySelectorAll('.value-card, .project-card, .gallery-item').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+            
+            // Enhanced form handling
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.textContent;
+                    
+                    // Show loading state
+                    submitBtn.innerHTML = '<span class="loading-spinner"></span> Sending...';
+                    submitBtn.disabled = true;
+                    
+                    // Simulate form submission
+                    setTimeout(() => {
+                        submitBtn.textContent = '✅ Message Sent!';
+                        submitBtn.style.background = 'var(--light-accent)';
+                        
+                        setTimeout(() => {
+                            submitBtn.textContent = originalText;
+                            submitBtn.disabled = false;
+                            submitBtn.style.background = '';
+                            this.reset();
+                        }, 2000);
+                    }, 2000);
+                    
+                    console.log('📧 Form submitted successfully');
+                });
+            });
+            
+            // Add scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe elements for scroll animations
+            document.querySelectorAll('.timeline-item, .value-card, .project-card, .gallery-item').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+            
+            // Initialize ALL Advanced Features
+            initParticleSystem();
+            initScrollProgress();
+            initFloatingActionButton();
+            initAdvancedAnimations();
+            
+            console.log('✅ ALL Advanced Portfolio Features Loaded Successfully!');
+        });
+
+        // Advanced Particle Background System
+        function initParticleSystem() {
+            const particleContainer = document.getElementById('particle-container');
+            if (!particleContainer) return;
+
+            const particleCount = window.innerWidth < 768 ? 20 : 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                createParticle();
+            }
+
+            function createParticle() {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random position
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                
+                // Random animation delay and duration
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                
+                particleContainer.appendChild(particle);
+                
+                // Remove and recreate particle after animation
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.remove();
+                        createParticle();
+                    }
+                }, (Math.random() * 3 + 4) * 1000);
+            }
+        }
+
+        // Advanced Scroll Progress Bar
+        function initScrollProgress() {
+            const progressBar = document.getElementById('scroll-progress');
+            if (!progressBar) return;
+
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.pageYOffset;
+                const docHeight = document.body.scrollHeight - window.innerHeight;
+                const scrollPercent = (scrollTop / docHeight) * 100;
+                
+                progressBar.style.width = scrollPercent + '%';
+            });
+        }
+
+        // Floating Action Button with Advanced Menu
+        function initFloatingActionButton() {
+            const fabMain = document.getElementById('fab-main');
+            const fabMenu = document.getElementById('fab-menu');
+            
+            if (!fabMain || !fabMenu) return;
+
+            let isOpen = false;
+
+            fabMain.addEventListener('click', () => {
+                isOpen = !isOpen;
+                fabMenu.classList.toggle('active', isOpen);
+                
+                // Rotate main button
+                fabMain.style.transform = isOpen ? 'rotate(45deg) scale(1.1)' : 'rotate(0deg) scale(1)';
+                
+                // Animate menu items
+                const items = fabMenu.querySelectorAll('.fab-item');
+                items.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.style.transform = isOpen ? 'scale(1) translateY(0)' : 'scale(0.8) translateY(10px)';
+                        item.style.opacity = isOpen ? '1' : '0';
+                    }, index * 100);
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!fabMain.contains(e.target) && !fabMenu.contains(e.target) && isOpen) {
+                    isOpen = false;
+                    fabMenu.classList.remove('active');
+                    fabMain.style.transform = 'rotate(0deg) scale(1)';
+                }
+            });
+        }
+
+
+
+        // Advanced Animations and Effects
+        function initAdvancedAnimations() {
+            // Gradient text animation for titles
+            document.querySelectorAll('.hero-title, .section-title').forEach(title => {
+                title.classList.add('gradient-text');
+            });
+
+            // Advanced card hover effects
+            document.querySelectorAll('.value-card, .project-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-15px) rotateX(5deg) rotateY(5deg)';
+                    this.style.boxShadow = '0 25px 50px rgba(0,0,0,0.2)';
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
+                    this.style.boxShadow = '';
+                });
+            });
+
+            // Glassmorphism effect for certain elements
+            document.querySelectorAll('.timeline-content, .contact-form').forEach(element => {
+                element.classList.add('glass-effect');
+            });
+
+            // Advanced loading skeletons
+            document.querySelectorAll('img').forEach(img => {
+                if (!img.complete) {
+                    img.style.background = 'linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%)';
+                    img.style.backgroundSize = '200% 100%';
+                    img.style.animation = 'loading 1.5s infinite';
+                    
+                    img.addEventListener('load', () => {
+                        img.style.background = '';
+                        img.style.animation = '';
+                    });
+                }
+            });
+        }
+
+        // Global utility functions
+        window.scrollToTop = function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        };
+
+        window.scrollToSection = function(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        };
+    </script>
+    
+    <!-- Analytics and tracking -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FNB6XYXKHY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-FNB6XYXKHY');
+        
+        // Track page view
+        document.addEventListener('DOMContentLoaded', () => {
+            gtag('event', 'page_view', {
+                page_title: document.title,
+                page_location: window.location.href,
+                page_path: window.location.pathname
+            });
+            
+            // Track scroll depth
+            let scrollDepth = 0;
+            window.addEventListener('scroll', () => {
+                const newDepth = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+                if (newDepth > scrollDepth && newDepth % 25 === 0) {
+                    gtag('event', 'scroll', {
+                        event_category: 'Engagement',
+                        event_label: `Scrolled ${newDepth}%`,
+                        value: newDepth
+                    });
+                    scrollDepth = newDepth;
+                }
+            });
+        });
+    </script>
+
     <script>
         // Mandala loader
         window.addEventListener('load', function() {
@@ -1836,25 +2829,42 @@
             }, 2000);
         });
 
-        // Theme toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        const body = document.body;
-        
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+        // FIXED: Working Theme Toggle
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        if (themeToggleBtn) {
+            // Set initial theme from localStorage or system preference
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             
-            if (body.classList.contains('dark-mode')) {
-                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                document.body.classList.add('dark-mode');
+                themeToggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
             } else {
-                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                document.body.classList.remove('dark-mode');
+                themeToggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
             }
-        });
-
-        // Set initial theme
-        if (localStorage.getItem('theme') === 'dark') {
-            body.classList.add('dark-mode');
-            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            
+            // Theme toggle functionality
+            themeToggleBtn.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                const isDark = document.body.classList.contains('dark-mode');
+                
+                // Update icon
+                themeToggleBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+                
+                // Save preference
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                
+                // Add smooth rotation animation
+                themeToggleBtn.style.transition = 'transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                themeToggleBtn.style.transform = 'rotate(360deg) scale(1.2)';
+                
+                setTimeout(() => {
+                    themeToggleBtn.style.transform = 'rotate(0deg) scale(1)';
+                }, 600);
+                
+                console.log('🎨 Theme switched to:', isDark ? 'dark' : 'light');
+            });
         }
 
         // Mobile menu toggle
