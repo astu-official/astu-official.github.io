@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - Conscious Journey</title>
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, #f8f5f0, #e8e5e0);
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        
+        .offline-container {
+            max-width: 500px;
+            padding: 40px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .offline-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: #8d6e63;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #8d6e63;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #7d5e53;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <div class="offline-icon">🏔️</div>
+        <h1>You're Offline</h1>
+        <p>It looks like you've lost your internet connection. Don't worry - like a mountain peak above the clouds, some things are worth waiting for.</p>
+        <p>Please check your connection and try again.</p>
+        <a href="/" class="btn" onclick="window.location.reload()">Try Again</a>
+    </div>
+</body>
+</html>
