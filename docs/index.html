@@ -700,6 +700,305 @@
 
 
 
+        /* Enhanced Contact Section Styles */
+        .direct-contact-methods {
+            margin-top: 40px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding-top: 30px;
+        }
+
+        body.dark-mode .direct-contact-methods {
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background: rgba(142, 110, 99, 0.05);
+        }
+
+        body.dark-mode .contact-method {
+            background: rgba(46, 204, 113, 0.05);
+        }
+
+        .contact-method i {
+            font-size: 24px;
+            margin-right: 15px;
+            color: var(--light-accent);
+        }
+
+        body.dark-mode .contact-method i {
+            color: var(--dark-accent);
+        }
+
+        .contact-method a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        body.dark-mode .contact-method a {
+            color: var(--dark-text);
+        }
+
+        .copy-btn {
+            margin-left: auto;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: var(--light-text);
+            transition: var(--transition);
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .copy-btn:hover {
+            color: var(--light-accent);
+            background: rgba(142, 110, 99, 0.1);
+        }
+
+        body.dark-mode .copy-btn {
+            color: var(--dark-text);
+        }
+
+        body.dark-mode .copy-btn:hover {
+            color: var(--dark-accent);
+            background: rgba(46, 204, 113, 0.1);
+        }
+
+        .messaging-options {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .messaging-options a {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 14px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .whatsapp {
+            background: rgba(37, 211, 102, 0.1);
+            color: #25D366;
+        }
+
+        .whatsapp:hover {
+            background: rgba(37, 211, 102, 0.2);
+        }
+
+        .telegram {
+            background: rgba(0, 136, 204, 0.1);
+            color: #0088cc;
+        }
+
+        .telegram:hover {
+            background: rgba(0, 136, 204, 0.2);
+        }
+
+        .viber {
+            background: rgba(116, 86, 159, 0.1);
+            color: #7456A3;
+        }
+
+        .viber:hover {
+            background: rgba(116, 86, 159, 0.2);
+        }
+
+        .social-links-contact {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .social-links-contact a {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 14px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .youtube {
+            background: rgba(255, 0, 0, 0.1);
+            color: #FF0000;
+        }
+
+        .youtube:hover {
+            background: rgba(255, 0, 0, 0.2);
+        }
+
+        .github {
+            background: rgba(51, 51, 51, 0.1);
+            color: #333333;
+        }
+
+        body.dark-mode .github {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+
+        .github:hover {
+            background: rgba(51, 51, 51, 0.2);
+        }
+
+        body.dark-mode .github:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .availability-card,
+        .scheduling-card,
+        .security-card,
+        .response-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .availability-card:hover,
+        .scheduling-card:hover,
+        .security-card:hover,
+        .response-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        body.dark-mode .availability-card, 
+        body.dark-mode .scheduling-card, 
+        body.dark-mode .security-card, 
+        body.dark-mode .response-card {
+            background: #1a2a1a;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        body.dark-mode .availability-card:hover,
+        body.dark-mode .scheduling-card:hover,
+        body.dark-mode .security-card:hover,
+        body.dark-mode .response-card:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 10px;
+            display: inline-block;
+        }
+
+        .available {
+            background: #2ecc71;
+            animation: pulse-green 2s infinite;
+        }
+
+        @keyframes pulse-green {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .status-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .status-content h4 {
+            margin: 0 0 5px 0;
+            color: var(--light-accent);
+        }
+
+        body.dark-mode .status-content h4 {
+            color: var(--dark-accent);
+        }
+
+        .timezone {
+            margin-top: 10px;
+            font-size: 14px;
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .security-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            color: #2ecc71;
+            font-weight: 600;
+        }
+
+        .privacy-policy {
+            margin-top: 15px;
+            text-align: right;
+        }
+
+        .privacy-policy a {
+            color: var(--light-accent);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        body.dark-mode .privacy-policy a {
+            color: var(--dark-accent);
+        }
+
+        .response-metric {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--light-accent);
+        }
+
+        body.dark-mode .metric-value {
+            color: var(--dark-accent);
+        }
+
+        .metric-label {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        .scheduling-card h4,
+        .security-card h4,
+        .response-card h4 {
+            color: var(--light-accent);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        body.dark-mode .scheduling-card h4,
+        body.dark-mode .security-card h4,
+        body.dark-mode .response-card h4 {
+            color: var(--dark-accent);
+        }
+
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .header-controls {
@@ -729,7 +1028,7 @@
             }
 
             .floating-nav {
-                right: 20px;
+                left: 20px;
                 bottom: 20px;
             }
 
@@ -741,6 +1040,20 @@
 
             .particle {
                 display: none;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .messaging-options {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .messaging-options a {
+                justify-content: center;
             }
         }
 
@@ -2365,45 +2678,129 @@
             </div>
 
             <div class="contact-container">
+                <!-- Contact Form Column -->
                 <div class="contact-form">
                     <h3 class="form-title">Send a Message</h3>
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" class="form-control">
+                    <form id="contact-form" action="https://formspree.io/f/meozobpg" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" name="subject" class="form-control" required>
+                                <option value="">Select a topic</option>
+                                <option value="collab">Collaboration</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="wisdom">Wisdom Sharing</option>
+                                <option value="consultation">Consultation</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-filled">Send Message</button>
+                    </form>
+
+                    <!-- Direct Contact Methods -->
+                    <div class="direct-contact-methods">
+                        <div class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:pivarthestoic@gmail.com">pivarthestoic@gmail.com</a>
+                            <button class="copy-btn" data-clipboard-text="pivarthestoic@gmail.com">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+
+                        <div class="contact-method">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+9779814245253">+977 9814245253</a>
+                            <button class="copy-btn" data-clipboard-text="+9779814245253">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+
+                        <div class="contact-method">
+                            <i class="fas fa-comment"></i>
+                            <div class="messaging-options">
+                                <a href="https://wa.me/9779814245253" target="_blank" class="whatsapp">
+                                    <i class="fab fa-whatsapp"></i> WhatsApp
+                                </a>
+                                <a href="viber://chat?number=+9779814245253" target="_blank" class="viber">
+                                    <i class="fab fa-viber"></i> Viber
+                                </a>
+                            </div>
+                        </div>
+
+
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <select id="subject" class="form-control">
-                            <option value="">Select a topic</option>
-                            <option value="collab">Collaboration</option>
-                            <option value="feedback">Feedback</option>
-                            <option value="wisdom">Wisdom Sharing</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" class="form-control"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-filled" style="width: 100%;">Send Message</button>
                 </div>
 
-                <div class="newsletter-box">
-                    <h3 class="newsletter-title">Join the Summit Journal</h3>
-                    <p>Receive monthly inspirations, exclusive content, and updates on conscious living</p>
-                    <div class="newsletter-form">
-                        <input type="email" class="newsletter-input" placeholder="Your email address">
-                        <button class="newsletter-btn">Subscribe</button>
+                <!-- Contact Options Column -->
+                <div class="contact-options">
+                    <!-- Availability Status -->
+                    <div class="availability-card">
+                        <div class="status-indicator available"></div>
+                        <div class="status-content">
+                            <h4>Current Availability</h4>
+                            <p>Available for consultations and collaborations</p>
+                            <div class="timezone">
+                                <i class="fas fa-clock"></i> 
+                                Nepal Time (GMT+5:45)
+                            </div>
+                        </div>
                     </div>
-                    <div style="margin-top: 30px;">
-                        <h4 style="margin-bottom: 15px;">Free Digital Gift:</h4>
-                        <a href="#" class="btn" style="background: white; color: var(--light-secondary);">
-                            <i class="fas fa-download"></i> Download "From Earth to Everest" E-book
+
+                    <!-- Calendly Scheduling Widget -->
+                    <div class="scheduling-card">
+                        <h4><i class="fas fa-calendar-check"></i> Schedule a Meeting</h4>
+                        <p>Book a 30-min discovery call directly:</p>
+                        <a href="https://calendly.com/pivarthestoic/30min" target="_blank" class="btn btn-filled"></a>
+                            <i class="fas fa-video"></i> Book Online Meeting
                         </a>
+                    </div>
+
+                    <!-- Secure Contact Assurance -->
+                    <div class="security-card">
+                        <div class="security-badge">
+                            <i class="fas fa-lock"></i>
+                            <span>Secure Connection</span>
+                        </div>
+                        <p>All communications are encrypted and confidential</p>
+                        <div class="privacy-policy">
+                            <a href="/privacy">View Privacy Policy</a>
+                        </div>
+                    </div>
+
+                    <!-- Response Time -->
+                    <div class="response-card">
+                        <h4><i class="fas fa-stopwatch"></i> Response Time</h4>
+                        <div class="response-metric">
+                            <div class="metric-value">24-48 hours</div>
+                            <div class="metric-label">Typical response time</div>
+                        </div>
+                    </div>
+
+                    <!-- Newsletter Section -->
+                    <div class="newsletter-box">
+                        <h3 class="newsletter-title">Join the Summit Journal</h3>
+                        <p>Receive monthly inspirations, exclusive content, and updates on conscious living</p>
+                        <div class="newsletter-form">
+                            <input type="email" class="newsletter-input" placeholder="Your email address">
+                            <button class="newsletter-btn">Subscribe</button>
+                        </div>
+                        <div style="margin-top: 30px;">
+                            <h4 style="margin-bottom: 15px;">Free Digital Gift:</h4>
+                            <a href="#" class="btn" style="background: white; color: var(--light-secondary);">
+                                <i class="fas fa-download"></i> Download "From Earth to Everest" E-book
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2416,10 +2813,10 @@
 <div class="container">
             <div class="social-links">
                 <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                <a href="https://youtube.com/@pivarthestoic?si=ialQEGh8L6uJTjp8" target="_blank" class="social-link"><i class="fab fa-youtube"></i></a>
                 <a href="#" class="social-link"><i class="fab fa-spotify"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                <a href="https://github.com/astu-official" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="mailto:pivarthestoic@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
             </div>
 
             <div class="footer-nav">
@@ -2635,6 +3032,7 @@
             initScrollProgress();
             initFloatingActionButton();
             initAdvancedAnimations();
+            initCopyButtons();
             
             console.log('✅ ALL Advanced Portfolio Features Loaded Successfully!');
         });
@@ -2783,6 +3181,72 @@
                 });
             }
         };
+
+        // Copy Button Functionality for Contact Section
+        function initCopyButtons() {
+            const copyButtons = document.querySelectorAll('.copy-btn');
+            
+            copyButtons.forEach(button => {
+                button.addEventListener('click', async () => {
+                    const textToCopy = button.getAttribute('data-clipboard-text');
+                    
+                    try {
+                        // Modern clipboard API
+                        if (navigator.clipboard && window.isSecureContext) {
+                            await navigator.clipboard.writeText(textToCopy);
+                            showCopySuccess(button);
+                        } else {
+                            // Fallback for older browsers
+                            const textArea = document.createElement('textarea');
+                            textArea.value = textToCopy;
+                            textArea.style.position = 'fixed';
+                            textArea.style.left = '-999999px';
+                            textArea.style.top = '-999999px';
+                            document.body.appendChild(textArea);
+                            textArea.focus();
+                            textArea.select();
+                            
+                            const successful = document.execCommand('copy');
+                            textArea.remove();
+                            
+                            if (successful) {
+                                showCopySuccess(button);
+                            } else {
+                                showCopyError(button);
+                            }
+                        }
+                    } catch (err) {
+                        console.error('Copy failed:', err);
+                        showCopyError(button);
+                    }
+                });
+            });
+        }
+
+        function showCopySuccess(button) {
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-check"></i>';
+            button.style.color = '#2ecc71';
+            
+            setTimeout(() => {
+                button.innerHTML = originalHTML;
+                button.style.color = '';
+            }, 2000);
+        }
+
+        function showCopyError(button) {
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-times"></i>';
+            button.style.color = '#e74c3c';
+            
+            setTimeout(() => {
+                button.innerHTML = originalHTML;
+                button.style.color = '';
+            }, 2000);
+            
+            // Show manual copy instruction
+            alert('Copy failed. Please copy manually: ' + button.getAttribute('data-clipboard-text'));
+        }
     </script>
     
     <!-- Analytics and tracking -->
