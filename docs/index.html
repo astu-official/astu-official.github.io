@@ -1,9 +1,20 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roshan Adhikari | Conscious Journey</title>
+    
+    <!-- Performance Optimization - Preload Critical Assets -->
+    <link rel="preload" href="assets/images/rihs.jpg" as="image">
+    <link rel="preload" href="assets/images/tbtm.jpg" as="image">
+    <link rel="preload" href="assets/images/cak.jpg" as="image">
+    <link rel="preload" href="assets/images/jace.jpg" as="image">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" as="style">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     
     <!-- Enhanced Mandala Loader Styles -->
     <style>
@@ -508,6 +519,147 @@
             50% { transform: translateY(-20px) rotate(180deg); }
         }
 
+        /* Serpent Background Ecosystem */
+        .serpent-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .serpent-1 {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><path d="M50,200 Q100,150 150,200 T250,200 T350,200" stroke="%234ade80" stroke-width="3" fill="none" stroke-dasharray="8,8"/></svg>');
+            background-size: 400px 400px;
+            animation: serpentMove 60s linear infinite;
+            opacity: 0.2;
+        }
+
+        .serpent-2 {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><path d="M50,200 Q100,250 150,200 T250,200 T350,200" stroke="%2322d3ee" stroke-width="2" fill="none" stroke-dasharray="5,5"/></svg>');
+            background-size: 350px 350px;
+            animation: serpentMoveReverse 70s linear infinite;
+            opacity: 0.15;
+        }
+
+        .serpent-3 {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><path d="M50,200 Q100,180 150,200 T250,200 T350,200" stroke="%23c084fc" stroke-width="4" fill="none" stroke-dasharray="10,10"/></svg>');
+            background-size: 450px 450px;
+            animation: serpentMove 80s linear infinite;
+            opacity: 0.1;
+        }
+
+        /* Serpent Animation Keyframes */
+        @keyframes serpentMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 400px 400px; }
+        }
+
+        @keyframes serpentMoveReverse {
+            0% { background-position: 400px 400px; }
+            100% { background-position: 0 0; }
+        }
+
+        /* Serpent Head */
+        .serpent-head {
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #4ade80, #22d3ee);
+            border-radius: 50% 50% 50% 0;
+            z-index: 5;
+            animation: serpentFloat 8s ease-in-out infinite;
+            box-shadow: 0 0 30px rgba(74, 222, 128, 0.5);
+            will-change: transform;
+        }
+
+        .serpent-head::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #0a1929;
+            border-radius: 50%;
+            top: 25px;
+            left: 25px;
+            animation: serpentBlink 5s infinite;
+        }
+
+        .serpent-head::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #0a1929;
+            border-radius: 50%;
+            top: 25px;
+            right: 25px;
+            animation: serpentBlink 5s infinite;
+        }
+
+        .serpent-tongue {
+            position: absolute;
+            width: 20px;
+            height: 30px;
+            background: #ec4899;
+            border-radius: 50% 50% 0 0;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: serpentTongue 2s infinite;
+        }
+
+        /* Serpent Head Animations */
+        @keyframes serpentFloat {
+            0%, 100% { transform: translateX(-50%) translateY(0) rotate(0deg); }
+            50% { transform: translateX(-50%) translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes serpentBlink {
+            0%, 95%, 100% { height: 20px; }
+            96%, 99% { height: 2px; }
+        }
+
+        @keyframes serpentTongue {
+            0%, 100% { height: 10px; }
+            50% { height: 30px; }
+        }
+
+        /* Timeline Pulse Animation */
+        @keyframes timelinePulse {
+            0%, 100% { box-shadow: 0 0 10px #4ade80, 0 0 20px #22d3ee, 0 0 30px #c084fc; }
+            50% { box-shadow: 0 0 20px #4ade80, 0 0 40px #22d3ee, 0 0 60px #c084fc; }
+        }
+
+        /* Performance Optimizations */
+        .serpent-layer {
+            will-change: background-position;
+        }
+
+        .timeline::before {
+            will-change: box-shadow;
+        }
+
+        /* Reduced Motion Support */
+        @media (prefers-reduced-motion: reduce) {
+            .serpent-head,
+            .serpent-layer,
+            .timeline::before {
+                animation: none;
+            }
+            
+            .serpent-head::before,
+            .serpent-head::after,
+            .serpent-tongue {
+                animation: none;
+            }
+        }
+
         /* Advanced Scroll Progress Bar */
         .scroll-progress {
             position: fixed;
@@ -698,7 +850,480 @@
             100% { background-position: -200% 0; }
         }
 
+        /* Conscious Experience Metrics */
+        .conscious-metrics {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
 
+        .metric {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px 30px;
+            border-radius: 15px;
+            min-width: 140px;
+            text-align: center;
+            border: 1px solid rgba(142, 110, 99, 0.2);
+            transition: var(--transition);
+        }
+
+        body.dark-mode .metric {
+            background: rgba(46, 204, 113, 0.1);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+        }
+
+        .metric:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .metric-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--light-accent);
+            font-family: 'Playfair Display', serif;
+            animation: metricPulse 3s ease-in-out infinite;
+        }
+
+        body.dark-mode .metric-value {
+            color: var(--dark-accent);
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: var(--light-text);
+            margin-top: 8px;
+            opacity: 0.8;
+        }
+
+        body.dark-mode .metric-label {
+            color: var(--dark-text);
+        }
+
+        @keyframes metricPulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
+        /* 3D Portfolio Showcase */
+        .portfolio-showcase {
+            perspective: 1000px;
+            margin-top: 50px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .portfolio-item {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(142, 110, 99, 0.2);
+            transition: var(--transition);
+            transform-style: preserve-3d;
+        }
+
+        body.dark-mode .portfolio-item {
+            background: rgba(46, 204, 113, 0.1);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px) rotateY(5deg);
+        }
+
+        .model-placeholder {
+            width: 100%;
+            height: 200px;
+            border-radius: 15px;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-item:hover .model-placeholder {
+            transform: rotateY(15deg) translateZ(20px);
+        }
+
+        .hemp-fabric {
+            background: linear-gradient(45deg, #8d6e63, #2e7d32);
+            background-size: 20px 20px;
+            background-image: 
+                radial-gradient(circle at 10px 10px, rgba(255,255,255,0.2) 2px, transparent 2px);
+        }
+
+        .mandala-3d {
+            background: linear-gradient(45deg, #4ade80, #22d3ee, #c084fc);
+            background-size: 40px 40px;
+            background-image: 
+                radial-gradient(circle at 20px 20px, rgba(255,255,255,0.3) 3px, transparent 3px),
+                radial-gradient(circle at 0px 0px, rgba(255,255,255,0.2) 2px, transparent 2px);
+        }
+
+        .mountain-range {
+            background: linear-gradient(to bottom, #4ade80 0%, #2e7d32 50%, #1b5e20 100%);
+            position: relative;
+        }
+
+        .mountain-range::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="20,80 40,20 60,80" fill="rgba(255,255,255,0.1)"/><polygon points="40,80 60,30 80,80" fill="rgba(255,255,255,0.15)"/></svg>');
+            background-size: 50px 50px;
+        }
+
+        .portfolio-info {
+            text-align: center;
+        }
+
+        .portfolio-info h3 {
+            color: var(--light-accent);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        body.dark-mode .portfolio-info h3 {
+            color: var(--dark-accent);
+        }
+
+        .portfolio-info p {
+            color: var(--light-text);
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        body.dark-mode .portfolio-info p {
+            color: var(--dark-text);
+        }
+
+        /* Enhanced Scroll Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.215, 0.61, 0.355, 1),
+                        transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+
+        .animate-in {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        /* Specialized Animation Types */
+        .animate-fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .animate-scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .animate-rotate-in {
+            opacity: 0;
+            transform: scale(0.95) rotate(-2deg);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-3d-flip {
+            opacity: 0;
+            transform: translateY(20px) rotateX(15deg);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        /* Mountain breathing animation */
+        @keyframes mountainBreath {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.03); opacity: 1; }
+        }
+
+        .breathing-mountains {
+            animation: mountainBreath 8s infinite ease-in-out;
+        }
+
+        /* Timeline animation enhancements */
+        .timeline-item {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .timeline-item.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Gallery animation enhancements */
+        .gallery-item {
+            opacity: 0;
+            transform: scale(0.95) rotate(-1deg);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .gallery-item.animate-in {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+
+        /* Value cards animation */
+        .value-card {
+            opacity: 0;
+            transform: translateY(30px) rotateX(5deg);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .value-card.animate-in {
+            opacity: 1;
+            transform: translateY(0) rotateX(0deg);
+        }
+
+        /* Project cards animation */
+        .project-card {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .project-card.animate-in {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Mountain breathing animation */
+        @keyframes breath {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.03); opacity: 1; }
+        }
+
+        /* Timeline animation */
+        .timeline-item {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .timeline-item.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Gallery animation */
+        .gallery-item {
+            opacity: 0;
+            transform: scale(0.95) rotate(-1deg);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .gallery-item.animate-in {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+
+        /* Value cards animation */
+        .value-card {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .value-card.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Project cards animation */
+        .project-card {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .project-card.animate-in {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+
+
+        /* === MICRO-INTERACTION STYLES === */
+
+        /* Button interactions */
+        .btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .btn:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 0 0;
+        }
+
+        .btn:focus:not(:active)::after {
+            animation: ripple 1s ease-out;
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(20, 20);
+                opacity: 0;
+            }
+        }
+
+        /* Enhanced card interactions */
+        .value-card:hover, .project-card:hover {
+            transform: translateY(-15px) rotateX(5deg) rotateY(5deg);
+            box-shadow: 0 25px 50px rgba(74, 222, 128, 0.4);
+            filter: brightness(1.05);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05) rotate(-2deg);
+            filter: brightness(1.1) saturate(1.2);
+        }
+
+        /* Form field interactions */
+        .form-control input:focus,
+        .form-control textarea:focus,
+        .form-control select:focus {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(74, 222, 128, 0.2);
+        }
+
+        /* Loading animations */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(142, 110, 99, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--light-accent);
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        body.dark-mode .loading-spinner {
+            border-top-color: var(--dark-accent);
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Success animations */
+        .success-animation {
+            animation: successPulse 1.5s ease;
+        }
+
+        @keyframes successPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Navigation interactions */
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--light-accent);
+            transition: width 0.4s ease;
+        }
+
+        body.dark-mode nav ul li a:after {
+            background: var(--dark-accent);
+        }
+
+        nav ul li a:hover:after,
+        nav ul li a.active:after {
+            width: 100%;
+        }
+
+        /* Social icon interactions */
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            filter: brightness(1.2);
+        }
+
+        /* Theme toggle interaction */
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Timeline year button interactions */
+        .timeline-year:hover {
+            transform: scale(1.1) rotate(5deg);
+            background: rgba(74, 222, 128, 0.2);
+            box-shadow: 0 8px 20px rgba(74, 222, 128, 0.3);
+        }
+
+        /* Conscious metrics interactions */
+        .metric:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(74, 222, 128, 0.2);
+        }
+
+        /* Portfolio item interactions */
+        .portfolio-item:hover {
+            transform: translateY(-10px) rotateY(5deg);
+        }
+
+        .portfolio-item:hover .model-placeholder {
+            transform: rotateY(15deg) translateZ(20px);
+            filter: brightness(1.1);
+        }
+
+        /* Ripple effect for buttons */
+        .btn-ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
 
         /* Enhanced Contact Section Styles */
         .direct-contact-methods {
@@ -1042,6 +1667,40 @@
                 display: none;
             }
 
+            /* Serpent Mobile Optimizations */
+            .serpent-head {
+                width: 60px;
+                height: 60px;
+                top: 15px;
+            }
+
+            .serpent-head::before,
+            .serpent-head::after {
+                width: 15px;
+                height: 15px;
+                top: 20px;
+            }
+
+            .serpent-head::before {
+                left: 20px;
+            }
+
+            .serpent-head::after {
+                right: 20px;
+            }
+
+            .serpent-tongue {
+                width: 15px;
+                height: 20px;
+            }
+
+            .serpent-1,
+            .serpent-2,
+            .serpent-3 {
+                animation-duration: 120s, 140s, 160s;
+                opacity: 0.1;
+            }
+
             .contact-container {
                 grid-template-columns: 1fr;
                 gap: 30px;
@@ -1054,6 +1713,45 @@
 
             .messaging-options a {
                 justify-content: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .serpent-head {
+                width: 50px;
+                height: 50px;
+                top: 10px;
+            }
+
+            .serpent-head::before,
+            .serpent-head::after {
+                width: 12px;
+                height: 12px;
+                top: 16px;
+            }
+
+            .serpent-head::before {
+                left: 16px;
+            }
+
+            .serpent-head::after {
+                right: 16px;
+            }
+
+            .serpent-tongue {
+                width: 12px;
+                height: 15px;
+            }
+
+            .timeline::before {
+                width: 6px;
+                margin-left: -3px;
+            }
+
+            .timeline-year {
+                font-size: 16px;
+                padding: 6px 12px;
+                margin-bottom: 10px;
             }
         }
 
@@ -1345,6 +2043,7 @@
             position: relative;
             max-width: 1000px;
             margin: 0 auto;
+            padding-top: 80px;
         }
 
         .timeline::before {
@@ -1352,15 +2051,17 @@
             position: absolute;
             top: 0;
             bottom: 0;
-            width: 4px;
-            background: var(--light-accent);
+            width: 8px;
+            background: linear-gradient(to bottom, #4ade80, #22d3ee, #c084fc, #f59e0b, #ec4899);
             left: 50%;
-            margin-left: -2px;
-            border-radius: 2px;
+            margin-left: -4px;
+            border-radius: 10px;
+            animation: timelinePulse 6s infinite;
+            z-index: 1;
         }
 
         body.dark-mode .timeline::before {
-            background: var(--dark-accent);
+            background: linear-gradient(to bottom, #4ade80, #22d3ee, #c084fc, #f59e0b, #ec4899);
         }
 
         .timeline-item {
@@ -1394,6 +2095,22 @@
             width: 90%;
             position: relative;
             transition: var(--transition);
+            overflow: hidden;
+            margin-top: 60px;
+        }
+
+        /* Serpent Scale Pattern */
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(74, 222, 128, 0.1) 0%, transparent 80%),
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100"><circle cx="20" cy="20" r="6" fill="rgba(34,211,238,0.1)"/><circle cx="50" cy="50" r="6" fill="rgba(34,211,238,0.1)"/><circle cx="80" cy="80" r="6" fill="rgba(34,211,238,0.1)"/></svg>');
+            z-index: -1;
+            opacity: 0.5;
         }
 
         .timeline-item.expanded .timeline-content {
@@ -1407,47 +2124,51 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
+        .timeline-content {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
         .timeline-content:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            transform: translateY(-15px) rotateX(5deg) rotateY(5deg);
+            box-shadow: 0 25px 50px rgba(74, 222, 128, 0.4);
         }
 
         body.dark-mode .timeline-content:hover {
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            box-shadow: 0 25px 50px rgba(74, 222, 128, 0.5);
         }
 
         .timeline-year {
-            position: absolute;
-            top: -30px;
+            display: inline-block;
             font-family: 'Playfair Display', serif;
-            font-size: 24px;
+            font-size: 18px;
             font-weight: 700;
-            color: var(--light-accent);
-            background: var(--light-bg);
-            padding: 5px 15px;
+            color: #4ade80;
+            background: rgba(10, 25, 41, 0.9);
+            padding: 8px 16px;
             border-radius: 30px;
-            border: 2px solid var(--light-accent);
+            border: 1px solid rgba(74, 222, 128, 0.4);
             cursor: pointer;
             transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            white-space: nowrap;
+            margin-bottom: 15px;
+            text-align: center;
         }
 
         .timeline-year:hover {
-            transform: scale(1.1);
+            transform: scale(1.1) rotate(5deg);
+            background: rgba(74, 222, 128, 0.2);
+            box-shadow: 0 8px 20px rgba(74, 222, 128, 0.3);
         }
 
         body.dark-mode .timeline-year {
-            color: var(--dark-accent);
-            background: var(--dark-bg);
-            border: 2px solid var(--dark-accent);
+            color: #4ade80;
+            background: rgba(10, 25, 41, 0.9);
+            border: 1px solid rgba(74, 222, 128, 0.4);
         }
 
-        .timeline-item:nth-child(odd) .timeline-year {
-            right: -20px;
-        }
 
-        .timeline-item:nth-child(even) .timeline-year {
-            left: -20px;
-        }
 
         .chapter-title {
             font-family: 'Playfair Display', serif;
@@ -2298,6 +3019,13 @@
         <div class="loader-text">Loading your conscious journey...</div>
     </div>
 
+    <!-- Serpent Background Ecosystem -->
+    <div class="serpent-layer serpent-1"></div>
+    <div class="serpent-layer serpent-2"></div>
+    <div class="serpent-layer serpent-3"></div>
+
+
+
 
 
     <!-- Header -->
@@ -2334,21 +3062,37 @@
 
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="breathing-mountains"></div>
+    <section class="hero" data-animate="breath">
+        <div class="breathing-mountains" data-animate="breath"></div>
         <div class="container">
             <div class="hero-content">
                 <!-- Your Profile Picture -->
-                <div class="profile-image">
+                <div class="profile-image" data-animate="zoomIn" data-delay="200">
                     <img src="assets/images/profile.jpg" alt="Roshan Adhikari" >
 </div>
                 
-                <div class="hero-subtitle">On Top of the World, Yet Rooted</div>
-                <h1 class="hero-title">Roshan Adhikari</h1>
-                <h2 class="hero-highlight">"Namaste. I am Roshan — a yogi, seeker, artist, creator, and climber of both mountains and mind. I walk the path of conscious living through nature, breath, code, and community."</h2>
-                <div class="hero-buttons">
+                <div class="hero-subtitle" data-animate="fadeUp" data-delay="300">On Top of the World, Yet Rooted</div>
+                <h1 class="hero-title" data-animate="fadeUp" data-delay="400">Roshan Adhikari</h1>
+                <h2 class="hero-highlight" data-animate="fadeUp" data-delay="500">"Namaste. I am Roshan — a yogi, seeker, artist, creator, and climber of both mountains and mind. I walk the path of conscious living through nature, breath, code, and community."</h2>
+                <div class="hero-buttons" data-animate="fadeUp" data-delay="600"></div>
                     <a href="#journey" class="btn">Begin the Journey</a>
                     <a href="#manifesto" class="btn btn-filled">Read My Manifesto</a>
+                </div>
+                
+                <!-- Conscious Experience Metrics -->
+                <div class="conscious-metrics">
+                    <div class="metric">
+                        <div class="metric-value" id="breath-count">2,487</div>
+                        <div class="metric-label">Breaths Today</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="mindful-minutes">42</div>
+                        <div class="metric-label">Mindful Minutes</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value" id="steps-count">7.8k</div>
+                        <div class="metric-label">Steps Taken</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2363,6 +3107,10 @@
             </div>
 
             <div class="timeline">
+                <!-- Serpent Head at Timeline Top -->
+                <div class="serpent-head">
+                    <div class="serpent-tongue"></div>
+                </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <div class="timeline-year">2004-2015</div>
@@ -2552,6 +3300,42 @@
                     <div class="gallery-overlay">
                         <h3 class="gallery-title">Yoga at Dawn</h3>
                         <div class="gallery-category">Mindful Movement</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 3D Portfolio Showcase -->
+            <div class="portfolio-showcase">
+                <h3 style="text-align: center; margin: 60px 0 40px; font-size: 2rem; color: var(--light-accent);">3D Conscious Creations</h3>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item" data-category="design">
+                        <div class="portfolio-model">
+                            <div class="model-placeholder hemp-fabric"></div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Conscious Thread Design</h3>
+                            <p>3D hemp fabric simulation</p>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="meditation">
+                        <div class="portfolio-model">
+                            <div class="model-placeholder mandala-3d"></div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Sacred Mandala</h3>
+                            <p>Interactive meditation tool</p>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item" data-category="nature">
+                        <div class="portfolio-model">
+                            <div class="model-placeholder mountain-range"></div>
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Himalayan Journey</h3>
+                            <p>Virtual trekking experience</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2901,6 +3685,13 @@
         document.addEventListener('DOMContentLoaded', function() {
             console.log('🚀 Enhanced Portfolio Features Loading...');
             
+            // Advanced Animations & Micro-Interactions
+            initAdvancedAnimations();
+            initConsciousMetrics();
+            initDigitalDetoxFeatures();
+            initScrollAnimations();
+            initMicroInteractions();
+            
             // Theme toggle is handled separately below - no duplicate needed here
             
             // Enhanced mobile menu with animations
@@ -3126,16 +3917,38 @@
 
         // Advanced Animations and Effects
         function initAdvancedAnimations() {
+            // Mountain breathing animation enhancement
+            const mountains = document.querySelector('.breathing-mountains');
+            if (mountains) {
+                document.addEventListener('mousemove', (e) => {
+                    const xPos = e.clientX / window.innerWidth;
+                    const yPos = e.clientY / window.innerHeight;
+                    mountains.style.transform = `scale(${1 + (yPos * 0.03)}) translateX(${xPos * 20}px)`;
+                });
+            }
+
+            // Mandala transition effect
+            const mandalaLoader = document.getElementById('mandala-loader');
+            if (mandalaLoader) {
+                window.addEventListener('beforeunload', () => {
+                    mandalaLoader.style.opacity = '1';
+                    mandalaLoader.style.display = 'flex';
+                });
+            }
+
             // Gradient text animation for titles
             document.querySelectorAll('.hero-title, .section-title').forEach(title => {
                 title.classList.add('gradient-text');
             });
 
-            // Advanced card hover effects
-            document.querySelectorAll('.value-card, .project-card').forEach(card => {
+            // Advanced card hover effects with 3D transforms
+            document.querySelectorAll('.value-card, .project-card, .timeline-content').forEach(card => {
+                card.style.transformStyle = 'preserve-3d';
+                card.style.perspective = '1000px';
+                
                 card.addEventListener('mouseenter', function() {
                     this.style.transform = 'translateY(-15px) rotateX(5deg) rotateY(5deg)';
-                    this.style.boxShadow = '0 25px 50px rgba(0,0,0,0.2)';
+                    this.style.boxShadow = '0 25px 50px rgba(74, 222, 128, 0.4)';
                 });
 
                 card.addEventListener('mouseleave', function() {
@@ -3428,6 +4241,431 @@
             sslStatus.addEventListener('click', () => {
                 alert('Your connection is not secure. Please contact support for help with SSL configuration.');
             });
+        }
+
+        // Conscious Experience Metrics
+        function initConsciousMetrics() {
+            const breathCount = document.getElementById('breath-count');
+            const mindfulMinutes = document.getElementById('mindful-minutes');
+            const stepsCount = document.getElementById('steps-count');
+
+            // Animate metrics on load
+            if (breathCount) {
+                animateCounter(breathCount, 2487, 3000);
+            }
+            if (mindfulMinutes) {
+                animateCounter(mindfulMinutes, 42, 2000);
+            }
+            if (stepsCount) {
+                animateCounter(stepsCount, 7800, 2500, 'k');
+            }
+
+            // Update metrics periodically (simulate real-time data)
+            setInterval(() => {
+                if (breathCount) {
+                    const currentBreaths = parseInt(breathCount.textContent.replace(',', ''));
+                    breathCount.textContent = (currentBreaths + Math.floor(Math.random() * 3) + 1).toLocaleString();
+                }
+                if (mindfulMinutes) {
+                    const currentMinutes = parseInt(mindfulMinutes.textContent);
+                    if (Math.random() > 0.7) { // 30% chance to increment
+                        mindfulMinutes.textContent = currentMinutes + 1;
+                    }
+                }
+            }, 60000); // Update every minute
+        }
+
+        function animateCounter(element, target, duration, suffix = '') {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    start = target;
+                    clearInterval(timer);
+                }
+                
+                let displayValue = Math.floor(start);
+                if (suffix === 'k' && displayValue >= 1000) {
+                    displayValue = (displayValue / 1000).toFixed(1) + 'k';
+                } else if (displayValue >= 1000) {
+                    displayValue = displayValue.toLocaleString();
+                }
+                
+                element.textContent = displayValue;
+            }, 16);
+        }
+
+        // Digital Detox Features
+        function initDigitalDetoxFeatures() {
+            // Add focus mode button to projects section
+            const techProject = document.querySelector('.project-card');
+            if (techProject) {
+                const focusBtn = document.createElement('button');
+                focusBtn.textContent = 'Enable Focus Mode';
+                focusBtn.className = 'btn focus-mode-btn';
+                focusBtn.style.marginTop = '15px';
+                focusBtn.addEventListener('click', enableFocusMode);
+                techProject.appendChild(focusBtn);
+            }
+        }
+
+        function enableFocusMode() {
+            const focusOverlay = document.createElement('div');
+            focusOverlay.style = `
+                position: fixed;
+                top: 0; left: 0;
+                width: 100%; height: 100%;
+                background: rgba(13,31,13,0.95);
+                z-index: 10000;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                font-family: 'Playfair Display', serif;
+            `;
+            
+            focusOverlay.innerHTML = `
+                <h3 style="font-size: 2.5rem; margin-bottom: 20px; color: #4ade80;">Focus Mode Activated</h3>
+                <p style="font-size: 1.2rem; margin-bottom: 10px;">Breathe in... Breathe out...</p>
+                <p style="font-size: 1.1rem; margin-bottom: 30px;">Current Focus Duration: <span id="focus-timer" style="color: #4ade80; font-weight: bold;">20:00</span></p>
+                <button id="disable-focus" style="
+                    background: #4ade80;
+                    color: black;
+                    border: none;
+                    padding: 15px 30px;
+                    border-radius: 30px;
+                    font-size: 1rem;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                ">Return to Journey</button>
+            `;
+            
+            document.body.appendChild(focusOverlay);
+            
+            // Timer functionality
+            let minutes = 20;
+            let seconds = 0;
+            const timer = setInterval(() => {
+                if (seconds === 0) {
+                    if (minutes === 0) {
+                        clearInterval(timer);
+                        focusOverlay.remove();
+                        return;
+                    }
+                    minutes--;
+                    seconds = 59;
+                } else {
+                    seconds--;
+                }
+                document.getElementById('focus-timer').textContent = 
+                    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }, 1000);
+            
+            document.getElementById('disable-focus').addEventListener('click', () => {
+                clearInterval(timer);
+                focusOverlay.remove();
+            });
+        }
+
+        // AI-Powered Recommendations
+        function generateRecommendations() {
+            const interests = ['yoga', 'sustainability', 'himalayan', 'tech'];
+            const recommendations = {
+                yoga: ['The Yoga Sutras of Patanjali', 'Breath by James Nestor', 'Light on Yoga by B.K.S. Iyengar'],
+                sustainability: ['Cradle to Cradle', 'The Upcycle', 'Biomimicry by Janine Benyus'],
+                himalayan: ['Himalaya: A Human History', 'Touching My Father\'s Soul', 'Mountains of the Mind'],
+                tech: ['Digital Minimalism', 'The Age of Surveillance Capitalism', 'Weapons of Math Destruction']
+            };
+            
+            const randomInterest = interests[Math.floor(Math.random() * interests.length)];
+            const randomBook = recommendations[randomInterest][Math.floor(Math.random() * recommendations[randomInterest].length)];
+            return { interest: randomInterest, book: randomBook };
+        }
+
+        // Initialize AI recommendations
+        function initAIRecommendations() {
+            const recommendation = generateRecommendations();
+            const heroSection = document.querySelector('.hero-content');
+            if (heroSection) {
+                const aiRecommendation = document.createElement('div');
+                aiRecommendation.className = 'ai-recommendation';
+                aiRecommendation.style = `
+                    margin-top: 20px;
+                    padding: 15px 20px;
+                    background: rgba(74, 222, 128, 0.1);
+                    border-radius: 10px;
+                    border: 1px solid rgba(74, 222, 128, 0.3);
+                    text-align: center;
+                `;
+                aiRecommendation.innerHTML = `
+                    <h4 style="color: #4ade80; margin-bottom: 5px;">Recommended for you:</h4>
+                    <p style="margin: 0; font-style: italic;">${recommendation.book}</p>
+                    <small style="opacity: 0.8;">Based on your ${recommendation.interest} interests</small>
+                `;
+                heroSection.appendChild(aiRecommendation);
+            }
+        }
+
+        // Initialize AI recommendations
+        initAIRecommendations();
+
+        // === MICRO-INTERACTIONS SYSTEM ===
+        function initMicroInteractions() {
+            // Button ripple effect
+            document.querySelectorAll('.btn').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    // Create ripple effect
+                    const ripple = document.createElement('span');
+                    ripple.className = 'btn-ripple';
+                    
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = x + 'px';
+                    ripple.style.top = y + 'px';
+                    
+                    this.appendChild(ripple);
+                    
+                    // Remove ripple after animation
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+
+            // Enhanced card hover effects
+            document.querySelectorAll('.value-card, .project-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-15px) rotateX(5deg) rotateY(5deg)';
+                    this.style.boxShadow = '0 25px 50px rgba(74, 222, 128, 0.4)';
+                    this.style.filter = 'brightness(1.05)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
+                    this.style.boxShadow = '';
+                    this.style.filter = '';
+                });
+            });
+
+            // Gallery item hover effects
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.05) rotate(-2deg)';
+                    this.style.filter = 'brightness(1.1) saturate(1.2)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1) rotate(0deg)';
+                    this.style.filter = '';
+                });
+            });
+
+            // Timeline year button interactions
+            document.querySelectorAll('.timeline-year').forEach(yearBtn => {
+                yearBtn.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.1) rotate(5deg)';
+                    this.style.background = 'rgba(74, 222, 128, 0.2)';
+                    this.style.boxShadow = '0 8px 20px rgba(74, 222, 128, 0.3)';
+                });
+                
+                yearBtn.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1) rotate(0deg)';
+                    this.style.background = 'rgba(10, 25, 41, 0.9)';
+                    this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.2)';
+                });
+            });
+
+            // Conscious metrics hover effects
+            document.querySelectorAll('.metric').forEach(metric => {
+                metric.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px) scale(1.05)';
+                    this.style.boxShadow = '0 15px 30px rgba(74, 222, 128, 0.2)';
+                });
+                
+                metric.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                    this.style.boxShadow = '';
+                });
+            });
+
+            // Portfolio item interactions
+            document.querySelectorAll('.portfolio-item').forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) rotateY(5deg)';
+                    const placeholder = item.querySelector('.model-placeholder');
+                    if (placeholder) {
+                        placeholder.style.transform = 'rotateY(15deg) translateZ(20px)';
+                        placeholder.style.filter = 'brightness(1.1)';
+                    }
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) rotateY(0deg)';
+                    const placeholder = item.querySelector('.model-placeholder');
+                    if (placeholder) {
+                        placeholder.style.transform = 'rotateY(0deg) translateZ(0px)';
+                        placeholder.style.filter = '';
+                    }
+                });
+            });
+
+            console.log('🎭 Micro-interactions initialized successfully!');
+        }
+
+        // Enhanced Scroll Animations System
+        function initScrollAnimations() {
+            // Configure animation settings
+            const animationSettings = {
+                rootMargin: '0px 0px -100px 0px',
+                threshold: 0.1,
+                staggerDelay: 150
+            };
+
+            // Create main observer for general animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateElement(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, animationSettings);
+
+            // Enhanced animation handler
+            function animateElement(element) {
+                const animationType = element.dataset.animate || 'fadeUp';
+                const delay = element.dataset.delay || 0;
+                
+                setTimeout(() => {
+                    element.classList.add('animate-in');
+                    
+                    // Special animations based on type
+                    switch(animationType) {
+                        case 'breath':
+                            element.style.animation = `mountainBreath 8s ease-in-out infinite`;
+                            break;
+                        case 'fadeUp':
+                            element.style.transform = 'translateY(0)';
+                            element.style.opacity = '1';
+                            break;
+                        case 'zoomIn':
+                            element.style.transform = 'scale(1)';
+                            element.style.opacity = '1';
+                            break;
+                        case 'rotateIn':
+                            element.style.transform = 'scale(1) rotate(0deg)';
+                            element.style.opacity = '1';
+                            break;
+                        case '3dFlip':
+                            element.style.transform = 'translateY(0) rotateX(0deg)';
+                            element.style.opacity = '1';
+                            break;
+                    }
+                }, delay);
+            }
+
+            // Register elements to animate
+            document.querySelectorAll('[data-animate]').forEach(el => {
+                // Set initial state based on animation type
+                const type = el.dataset.animate;
+                
+                if (type === 'fadeUp') {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(30px)';
+                }
+                else if (type === 'zoomIn') {
+                    el.style.opacity = '0';
+                    el.style.transform = 'scale(0.9)';
+                }
+                else if (type === 'breath') {
+                    el.style.opacity = '0.8';
+                }
+                
+                observer.observe(el);
+            });
+
+            // Special timeline animation
+            const timelineObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        document.querySelectorAll('.timeline-item').forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('animate-in');
+                            }, index * 300);
+                        });
+                        timelineObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            const timeline = document.querySelector('.timeline');
+            if (timeline) {
+                timelineObserver.observe(timeline);
+            }
+
+            // Gallery items animation
+            const galleryObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        document.querySelectorAll('.gallery-item').forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('animate-in');
+                            }, index * 150);
+                        });
+                        galleryObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            const galleryGrid = document.querySelector('.gallery-grid');
+            if (galleryGrid) {
+                galleryObserver.observe(galleryGrid);
+            }
+
+            // Value cards animation
+            const valuesObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        document.querySelectorAll('.value-card').forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('animate-in');
+                            }, index * 200);
+                        });
+                        valuesObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            const valuesGrid = document.querySelector('.values-grid');
+            if (valuesGrid) {
+                valuesObserver.observe(valuesGrid);
+            }
+
+            // Project cards animation
+            const projectsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        document.querySelectorAll('.project-card').forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('animate-in');
+                            }, index * 250);
+                        });
+                        projectsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            const projectsGrid = document.querySelector('.projects-grid');
+            if (projectsGrid) {
+                projectsObserver.observe(projectsGrid);
+            }
         }
     </script>
 </body>
