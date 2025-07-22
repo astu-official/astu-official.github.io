@@ -130,6 +130,47 @@
             
             /* Animation */
             --transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+            
+            /* Creative Section Headings - Enhanced Variables */
+            --holographic-gold: #ffd700;
+            --holographic-orange: #f79d00;
+            --holographic-pink: #e52e71;
+            --holographic-purple: #6a11cb;
+            --holographic-blue: #2575fc;
+            --holographic-cyan: #00c9ff;
+            
+            /* Animation Timings */
+            --holographic-duration: 8s;
+            --gradient-shift-duration: 4s;
+            --pulse-duration: 2s;
+            --spin-duration: 20s;
+            --float-duration: 15s;
+            
+            /* Particle System */
+            --particle-orange: rgba(255, 138, 0, 0.5);
+            --particle-pink: rgba(229, 46, 113, 0.5);
+            --particle-purple: rgba(106, 17, 203, 0.5);
+            --particle-count-desktop: 25;
+            --particle-count-mobile: 12;
+            
+            /* Glass Morphism */
+            --glass-bg-light: rgba(255, 255, 255, 0.05);
+            --glass-bg-dark: rgba(255, 255, 255, 0.02);
+            --glass-border-light: rgba(255, 255, 255, 0.1);
+            --glass-border-dark: rgba(255, 255, 255, 0.05);
+            --glass-blur: 12px;
+            --glass-radius: 24px;
+            
+            /* Text Effects */
+            --shadow-orange: rgba(255, 138, 0, 0.3);
+            --shadow-black: rgba(0, 0, 0, 0.1);
+            --text-lift-base: -5px;
+            --text-lift-hover: -8px;
+            
+            /* Lazy Loading System */
+            --lazy-shimmer-light: linear-gradient(90deg, rgba(142, 110, 99, 0.1) 25%, rgba(142, 110, 99, 0.15) 50%, rgba(142, 110, 99, 0.1) 75%);
+            --lazy-shimmer-dark: linear-gradient(90deg, rgba(46, 204, 113, 0.1) 25%, rgba(46, 204, 113, 0.15) 50%, rgba(46, 204, 113, 0.1) 75%);
+            --lazy-transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
         * {
@@ -1862,30 +1903,184 @@
             z-index: 1;
         }
 
+        /* Elegant Profile Image with Mandala-Inspired Design */
         .profile-image {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin: 0 auto 30px;
-            border: 4px solid var(--light-accent);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            transition: var(--transition);
-        }
-        
-        .profile-image:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 40px;
+            position: relative;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
         }
 
-        .profile-image img {
+        /* Mandala Ring System */
+        .profile-image::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            border-radius: 50%;
+            background: conic-gradient(
+                from 0deg,
+                var(--light-accent) 0deg,
+                transparent 60deg,
+                var(--light-secondary) 120deg,
+                transparent 180deg,
+                var(--light-accent) 240deg,
+                transparent 300deg,
+                var(--light-secondary) 360deg
+            );
+            animation: mandalaRotate 20s linear infinite;
+            opacity: 0.6;
+        }
+
+        .profile-image::after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border-radius: 50%;
+            border: 2px solid var(--light-accent);
+            border-style: dashed;
+            animation: mandalaRotate 15s linear infinite reverse;
+            opacity: 0.4;
+        }
+
+        /* Main Image Container */
+        .profile-image .image-container {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+            border: 4px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 
+                0 0 0 1px var(--light-accent),
+                0 15px 35px rgba(0, 0, 0, 0.2),
+                inset 0 2px 10px rgba(255, 255, 255, 0.3);
+            background: var(--light-bg);
+        }
+
+        .profile-image img,
+        .profile-image picture,
+        .profile-image .lazy-loaded {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border-radius: 50%;
+            display: block;
+            transition: all 0.6s ease;
         }
 
-        body.dark-mode .profile-image {
+        /* Hover Effects */
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-image:hover::before {
+            animation-duration: 8s;
+            opacity: 0.8;
+            transform: scale(1.1);
+        }
+
+        .profile-image:hover::after {
+            animation-duration: 6s;
+            opacity: 0.6;
+            transform: scale(1.05);
+        }
+
+        .profile-image:hover .image-container {
+            box-shadow: 
+                0 0 0 1px var(--light-accent),
+                0 25px 50px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(142, 110, 99, 0.4),
+                inset 0 2px 10px rgba(255, 255, 255, 0.4);
+        }
+
+        .profile-image:hover img {
+            transform: scale(1.02);
+        }
+
+        /* Lazy Loading Integration */
+        .profile-image.lazy-container {
+            display: block;
+            background: transparent !important;
+            border-radius: 50% !important;
+            overflow: visible !important;
+        }
+
+        .profile-image .lazy-placeholder {
+            border-radius: 50%;
+            background: linear-gradient(45deg, 
+                rgba(142, 110, 99, 0.1), 
+                rgba(142, 110, 99, 0.2), 
+                rgba(142, 110, 99, 0.1)
+            );
+        }
+
+        .profile-image .lazy-spinner {
+            border: 3px solid rgba(142, 110, 99, 0.2);
+            border-top-color: var(--light-accent);
+            width: 50px;
+            height: 50px;
+        }
+
+        /* Dark Mode Adaptations */
+        body.dark-mode .profile-image::before {
+            background: conic-gradient(
+                from 0deg,
+                var(--dark-accent) 0deg,
+                transparent 60deg,
+                var(--dark-secondary) 120deg,
+                transparent 180deg,
+                var(--dark-accent) 240deg,
+                transparent 300deg,
+                var(--dark-secondary) 360deg
+            );
+        }
+
+        body.dark-mode .profile-image::after {
             border-color: var(--dark-accent);
+        }
+
+        body.dark-mode .profile-image .image-container {
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 0 0 1px var(--dark-accent),
+                0 15px 35px rgba(0, 0, 0, 0.4),
+                inset 0 2px 10px rgba(255, 255, 255, 0.1);
+            background: var(--dark-bg);
+        }
+
+        body.dark-mode .profile-image:hover .image-container {
+            box-shadow: 
+                0 0 0 1px var(--dark-accent),
+                0 25px 50px rgba(0, 0, 0, 0.6),
+                0 0 30px rgba(46, 204, 113, 0.4),
+                inset 0 2px 10px rgba(255, 255, 255, 0.2);
+        }
+
+        body.dark-mode .profile-image .lazy-placeholder {
+            background: linear-gradient(45deg, 
+                rgba(46, 204, 113, 0.1), 
+                rgba(46, 204, 113, 0.2), 
+                rgba(46, 204, 113, 0.1)
+            );
+        }
+
+        body.dark-mode .profile-image .lazy-spinner {
+            border-color: rgba(46, 204, 113, 0.2);
+            border-top-color: var(--dark-accent);
+        }
+
+        /* Mandala Rotation Animation */
+        @keyframes mandalaRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .hero-subtitle {
@@ -1996,47 +2191,584 @@
             background-color: var(--dark-bg);
         }
 
+        /* Enhanced Section Headers with Creative Effects */
         .section-header {
             text-align: center;
             margin-bottom: 70px;
+            position: relative;
+            padding: 4rem 2rem;
+            border-radius: var(--glass-radius);
+            overflow: hidden;
+            background: var(--glass-bg-light);
+            backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--glass-border-light);
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.1),
+                inset 0 5px 15px rgba(255, 255, 255, 0.05);
+            
+            /* 3D Transform Perspective */
+            perspective: 1000px;
+            transform-style: preserve-3d;
         }
 
+        body.dark-mode .section-header {
+            background: var(--glass-bg-dark);
+            border: 1px solid var(--glass-border-dark);
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.3),
+                inset 0 5px 15px rgba(255, 255, 255, 0.02);
+        }
+
+        /* Fallback for browsers without backdrop-filter support */
+        @supports not (backdrop-filter: blur(12px)) {
+            .section-header {
+                background: rgba(255, 255, 255, 0.15);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+            
+            body.dark-mode .section-header {
+                background: rgba(0, 0, 0, 0.15);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+        }
+
+        /* Enhanced glass morphism with additional visual layers */
+        .section-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* CRITICAL: Section Title Styles with Holographic Effect */
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: 42px;
-            font-weight: 700;
-            color: var(--light-text);
-            margin-bottom: 20px;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
             position: relative;
             display: inline-block;
+            z-index: 2;
+            
+            /* Holographic Text Effect */
+            background: linear-gradient(
+                110deg,
+                #ffd700 0%,    /* Gold */
+                #f79d00 18%,   /* Orange */
+                #e52e71 38%,   /* Pink */
+                #6a11cb 58%,   /* Purple */
+                #2575fc 78%,   /* Blue */
+                #00c9ff 100%   /* Cyan */
+            );
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            background-size: 300% 300%;
+            animation: holographic 8s ease infinite;
+            
+            /* 3D Text Shadow */
+            text-shadow:
+                3px 3px 0 rgba(255, 138, 0, 0.3),
+                6px 6px 0 rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px) translateZ(50px);
+            transition: all 0.5s cubic-bezier(0.17, 0.84, 0.44, 1);
         }
 
-        body.dark-mode .section-title {
-            color: var(--dark-text);
+        .section-title:hover {
+            transform: translateY(-8px) scale(1.02) translateZ(50px);
+            text-shadow:
+                2px 2px 0 rgba(255, 138, 0, 0.5),
+                4px 4px 0 rgba(255, 138, 0, 0.4),
+                6px 6px 0 rgba(255, 138, 0, 0.3),
+                8px 8px 0 rgba(0, 0, 0, 0.2),
+                12px 12px 0 rgba(0, 0, 0, 0.15);
         }
 
+        /* Animated Gradient Underline */
         .section-title::after {
-            content: '';
-            display: block;
-            height: 3px;
-            width: 100px;
-            background-color: var(--light-accent);
-            margin: 15px auto 0;
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 6px;
+            background: linear-gradient(90deg, #ff8a00, #e52e71, #6a11cb);
+            background-size: 300% 300%;
+            border-radius: 3px;
+            animation: gradientShift 4s ease infinite;
         }
 
-        body.dark-mode .section-title::after {
-            background-color: var(--dark-accent);
-        }
-
+        /* Section Subtitle Styles */
         .section-subtitle {
             color: var(--light-accent);
-            font-size: 20px;
+            font-size: 1.5rem;
+            font-style: italic;
+            opacity: 0.85;
             max-width: 700px;
             margin: 0 auto;
+            position: relative;
+            padding: 0 2rem;
+            z-index: 2;
+            transform: translateZ(30px);
+            transition: all 0.5s cubic-bezier(0.17, 0.84, 0.44, 1) 0.1s;
         }
 
         body.dark-mode .section-subtitle {
             color: var(--dark-accent);
+        }
+
+        .section-subtitle::before,
+        .section-subtitle::after {
+            content: "✦";
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            opacity: 0.7;
+            animation: pulse 2s infinite;
+        }
+
+        .section-subtitle::before {
+            left: 0;
+        }
+
+        .section-subtitle::after {
+            right: 0;
+        }
+
+        /* Particle Animation System */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.6;
+            pointer-events: none;
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+        }
+
+        .particle-orange {
+            background: radial-gradient(circle, var(--particle-orange) 0%, transparent 70%);
+        }
+
+        .particle-pink {
+            background: radial-gradient(circle, var(--particle-pink) 0%, transparent 70%);
+        }
+
+        .particle-purple {
+            background: radial-gradient(circle, var(--particle-purple) 0%, transparent 70%);
+        }
+
+        /* Floating Animation for Particles */
+        @keyframes floatParticle {
+            0% { 
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0.4;
+            }
+            25% { 
+                transform: translateY(-30px) translateX(20px) rotate(90deg);
+                opacity: 0.8;
+            }
+            50% { 
+                transform: translateY(-10px) translateX(40px) rotate(180deg);
+                opacity: 0.6;
+            }
+            75% { 
+                transform: translateY(-40px) translateX(20px) rotate(270deg);
+                opacity: 0.9;
+            }
+            100% { 
+                transform: translateY(0) translateX(0) rotate(360deg);
+                opacity: 0.4;
+            }
+        }
+
+        /* Decorative Ornament System */
+        .ornament {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.2;
+            z-index: 0;
+            color: var(--holographic-gold);
+            pointer-events: none;
+            will-change: transform;
+            backface-visibility: hidden;
+            animation: spin var(--spin-duration) linear infinite;
+        }
+
+        body.dark-mode .ornament {
+            color: var(--dark-accent);
+        }
+
+        .ornament-1 {
+            top: 15%;
+            left: 10%;
+            animation-duration: 20s;
+        }
+
+        .ornament-2 {
+            top: 25%;
+            right: 15%;
+            animation-duration: 25s;
+            animation-direction: reverse;
+        }
+
+        .ornament-3 {
+            bottom: 20%;
+            left: 20%;
+            animation-duration: 30s;
+        }
+
+        .ornament-4 {
+            bottom: 15%;
+            right: 10%;
+            animation-duration: 22s;
+            animation-direction: reverse;
+        }
+
+        /* Ornament Spin Animation */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Lazy Loading System Styles */
+        .lazy-container {
+            position: relative;
+            overflow: hidden;
+            background: rgba(142, 110, 99, 0.05);
+            border-radius: 8px;
+        }
+
+        body.dark-mode .lazy-container {
+            background: rgba(46, 204, 113, 0.05);
+        }
+
+        .lazy-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--lazy-shimmer-light);
+            background-size: 200% 200%;
+            animation: placeholderShimmer 1.5s linear infinite;
+            border-radius: inherit;
+            z-index: 1;
+        }
+
+        body.dark-mode .lazy-placeholder {
+            background: var(--lazy-shimmer-dark);
+        }
+
+        @keyframes placeholderShimmer {
+            0% { background-position: 100% 0; }
+            100% { background-position: -100% 0; }
+        }
+
+        .lazy-spinner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(142, 110, 99, 0.2);
+            border-top-color: var(--light-accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            z-index: 2;
+        }
+
+        body.dark-mode .lazy-spinner {
+            border: 3px solid rgba(46, 204, 113, 0.2);
+            border-top-color: var(--dark-accent);
+        }
+
+        .lazy-loaded {
+            opacity: 0;
+            transition: var(--lazy-transition);
+            transform: scale(0.95);
+            z-index: 3;
+        }
+
+        .lazy-loaded.loaded {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Enhanced image containers for lazy loading */
+        .profile-image,
+        .gallery-item,
+        .project-image,
+        .value-icon {
+            position: relative;
+        }
+
+        .profile-image.lazy-container,
+        .gallery-item.lazy-container,
+        .project-image.lazy-container,
+        .value-icon.lazy-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+            z-index: 2;
+            
+            /* Fallback color for browsers without background-clip support */
+            color: var(--light-text);
+            
+            /* Holographic Text Effect */
+            background: linear-gradient(
+                110deg,
+                var(--holographic-gold) 0%,
+                var(--holographic-orange) 18%,
+                var(--holographic-pink) 38%,
+                var(--holographic-purple) 58%,
+                var(--holographic-blue) 78%,
+                var(--holographic-cyan) 100%
+            );
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            background-size: 300% 300%;
+            animation: holographic var(--holographic-duration) ease infinite;
+            
+            /* Performance optimizations */
+            will-change: background-position, transform;
+            backface-visibility: hidden;
+            
+            /* 3D Text Shadow */
+            text-shadow:
+                3px 3px 0 var(--shadow-orange),
+                6px 6px 0 var(--shadow-black);
+            
+            /* 3D Transform for Kinetic Scroll Effects */
+            transform: translateY(var(--text-lift-base)) translateZ(50px);
+            transition: all 0.5s cubic-bezier(0.17, 0.84, 0.44, 1);
+        }
+
+        /* Dark mode fallback */
+        body.dark-mode .section-title {
+            color: var(--dark-text);
+        }
+
+        /* Fallback for browsers without background-clip support */
+        @supports not (background-clip: text) {
+            .section-title {
+                color: var(--holographic-gold);
+                background: none;
+                animation: none;
+            }
+            
+            body.dark-mode .section-title {
+                color: var(--dark-accent);
+            }
+        }
+
+        .section-title:hover {
+            transform: translateY(var(--text-lift-hover)) scale(1.02);
+            text-shadow:
+                2px 2px 0 rgba(255, 138, 0, 0.5),
+                4px 4px 0 rgba(255, 138, 0, 0.4),
+                6px 6px 0 rgba(255, 138, 0, 0.3),
+                8px 8px 0 rgba(0, 0, 0, 0.2),
+                12px 12px 0 rgba(0, 0, 0, 0.15),
+                16px 16px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animated Gradient Underline */
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 6px;
+            background: linear-gradient(90deg, var(--holographic-orange), var(--holographic-pink), var(--holographic-purple));
+            background-size: 300% 300%;
+            border-radius: 3px;
+            animation: gradientShift var(--gradient-shift-duration) ease infinite;
+        }
+
+        .section-subtitle {
+            color: var(--light-accent);
+            font-size: 1.5rem;
+            font-style: italic;
+            opacity: 0.85;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            padding: 0 2rem;
+            z-index: 2;
+            
+            /* 3D Transform for Kinetic Scroll Effects */
+            transform: translateZ(30px);
+            transition: all 0.5s cubic-bezier(0.17, 0.84, 0.44, 1) 0.1s;
+        }
+
+        body.dark-mode .section-subtitle {
+            color: var(--dark-accent);
+        }
+
+        .section-subtitle::before,
+        .section-subtitle::after {
+            content: "✦";
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            opacity: 0.7;
+            animation: pulse var(--pulse-duration) infinite;
+        }
+
+        .section-subtitle::before {
+            left: 0;
+        }
+
+        .section-subtitle::after {
+            right: 0;
+        }
+
+        /* Creative Section Headings - Animation Keyframes */
+        @keyframes holographic {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 50% 25%; }
+            50% { background-position: 100% 50%; }
+            75% { background-position: 50% 75%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            20% { background-position: 30% 30%; }
+            40% { background-position: 70% 70%; }
+            60% { background-position: 100% 50%; }
+            80% { background-position: 70% 30%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Responsive Design for Creative Headers */
+        @media (max-width: 768px) {
+            .section-header {
+                padding: 2rem 1rem;
+                margin-bottom: 50px;
+                /* Reduce 3D effects on mobile for better performance */
+                perspective: 500px;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+                /* Simplify 3D transforms on mobile */
+                transform: translateY(var(--text-lift-base)) translateZ(25px) !important;
+            }
+            
+            .section-subtitle {
+                font-size: 1.2rem;
+                padding: 0 1.5rem;
+                /* Simplify 3D transforms on mobile */
+                transform: translateZ(15px) !important;
+            }
+            
+            .section-title::after {
+                width: 80px;
+                height: 4px;
+            }
+            
+            /* Reduce ornament size on mobile */
+            .ornament {
+                font-size: 2rem;
+                opacity: 0.15;
+            }
+            
+            /* Optimize particle animations for mobile */
+            .particle {
+                animation-duration: 20s !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-header {
+                padding: 1.5rem 0.5rem;
+                margin-bottom: 40px;
+                /* Further reduce 3D effects on small screens */
+                perspective: 300px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+                /* Minimal 3D transforms on small screens */
+                transform: translateY(var(--text-lift-base)) translateZ(10px) !important;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+                padding: 0 1rem;
+                /* Minimal 3D transforms on small screens */
+                transform: translateZ(5px) !important;
+            }
+            
+            .section-title::after {
+                width: 60px;
+                height: 3px;
+            }
+            
+            /* Further reduce ornament size on small screens */
+            .ornament {
+                font-size: 1.5rem;
+                opacity: 0.1;
+            }
+            
+            /* Simplify subtitle stars on small screens */
+            .section-subtitle::before,
+            .section-subtitle::after {
+                font-size: 1rem;
+            }
+        }
+
+        /* Reduce motion for users who prefer it */
+        @media (prefers-reduced-motion: reduce) {
+            .section-title,
+            .section-subtitle,
+            .particle,
+            .ornament {
+                animation: none !important;
+                transform: none !important;
+                transition: none !important;
+            }
+            
+            .section-title::after {
+                animation: none !important;
+            }
         }
 
         .timeline {
@@ -3066,10 +3798,26 @@
         <div class="breathing-mountains" data-animate="breath"></div>
         <div class="container">
             <div class="hero-content">
-                <!-- Your Profile Picture -->
-                <div class="profile-image" data-animate="zoomIn" data-delay="200">
-                    <img src="assets/images/profile.jpg" alt="Roshan Adhikari" >
-</div>
+                <!-- Your Profile Picture - Mandala-Inspired Design with Lazy Loading -->
+                <div class="profile-image lazy-container" data-animate="zoomIn" data-delay="200">
+                    <div class="image-container">
+                        <div class="lazy-placeholder"></div>
+                        <div class="lazy-spinner"></div>
+                        <picture>
+                            <source srcset="assets/images/WEBP/profile.webp" type="image/webp">
+                            <img 
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3C/svg%3E"
+                                data-src="assets/images/profile.jpg"
+                                alt="Roshan Adhikari"
+                                class="lazy-loaded"
+                                width="200"
+                                height="200"
+                                loading="eager"
+                                decoding="async"
+                            >
+                        </picture>
+                    </div>
+                </div>
                 
                 <div class="hero-subtitle" data-animate="fadeUp" data-delay="300">On Top of the World, Yet Rooted</div>
                 <h1 class="hero-title" data-animate="fadeUp" data-delay="400">Roshan Adhikari</h1>
@@ -3115,8 +3863,22 @@
                     <div class="timeline-content">
                         <div class="timeline-year">2004-2015</div>
                         <h3 class="chapter-title">Rooted in Himalayan Soil</h3>
-                        <div class="chapter-image">
-                            <img src="assets/images/rihs.jpg" alt="Nepal countryside">
+                        <div class="chapter-image lazy-container">
+                            <div class="lazy-placeholder"></div>
+                            <div class="lazy-spinner"></div>
+                            <picture>
+                                <source srcset="assets/images/WEBP/rihs.webp" type="image/webp">
+                                <img 
+                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'%3E%3C/svg%3E"
+                                    data-src="assets/images/rihs.jpg"
+                                    alt="Nepal countryside"
+                                    class="lazy-loaded"
+                                    width="300"
+                                    height="200"
+                                    loading="lazy"
+                                    decoding="async"
+                                >
+                            </picture>
                         </div>
                         <p class="chapter-text">My childhood in rural Nepal taught me the rhythms of nature and the wisdom of the earth. Growing up surrounded by mountains, I learned that true strength comes from stillness and connection to the land.</p>
                         
@@ -4667,6 +5429,316 @@
                 projectsObserver.observe(projectsGrid);
             }
         }
+
+        // Creative Section Headings - Particle Animation System
+        function createParticles(containerId, count = 25) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            const colors = ['particle-orange', 'particle-pink', 'particle-purple'];
+            const isMobile = window.innerWidth <= 768;
+            const particleCount = isMobile ? Math.floor(count * 0.5) : count;
+
+            // Clear existing particles
+            container.innerHTML = '';
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random properties
+                const size = Math.random() * 80 + 20; // 20px to 100px
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const colorClass = colors[Math.floor(Math.random() * colors.length)];
+                const delay = Math.random() * 15; // 0 to 15 seconds delay
+                const duration = 15 + Math.random() * 10; // 15 to 25 seconds duration
+                
+                // Apply properties
+                particle.classList.add(colorClass);
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.animation = `floatParticle ${duration}s ease-in-out infinite`;
+                
+                container.appendChild(particle);
+            }
+        }
+
+        // Create decorative ornaments for section headers
+        function createOrnaments(header, index) {
+            console.log(`Creating ornaments for header ${index}`);
+            
+            // Remove existing ornaments
+            const existingOrnaments = header.querySelectorAll('.ornament');
+            existingOrnaments.forEach(ornament => ornament.remove());
+
+            const ornamentSymbols = ['✦', '❖', '❈', '✧', '✪', '✯'];
+            const ornamentCount = 4;
+
+            for (let i = 0; i < ornamentCount; i++) {
+                const ornament = document.createElement('div');
+                ornament.classList.add('ornament', `ornament-${i + 1}`);
+                ornament.textContent = ornamentSymbols[Math.floor(Math.random() * ornamentSymbols.length)];
+                
+                // Add slight variation to positioning
+                const basePositions = [
+                    { top: '15%', left: '10%' },
+                    { top: '25%', right: '15%' },
+                    { bottom: '20%', left: '20%' },
+                    { bottom: '15%', right: '10%' }
+                ];
+                
+                const position = basePositions[i];
+                Object.keys(position).forEach(key => {
+                    ornament.style[key] = position[key];
+                });
+                
+                header.appendChild(ornament);
+                console.log(`Added ornament ${i + 1} to header ${index}:`, ornament);
+            }
+        }
+
+        // Initialize particles for all section headers
+        function initSectionParticles() {
+            const sectionHeaders = document.querySelectorAll('.section-header');
+            console.log('Found section headers:', sectionHeaders.length);
+            
+            sectionHeaders.forEach((header, index) => {
+                console.log(`Processing header ${index}:`, header);
+                
+                // Add particles container if it doesn't exist
+                if (!header.querySelector('.particles')) {
+                    const particlesContainer = document.createElement('div');
+                    particlesContainer.classList.add('particles');
+                    particlesContainer.id = `particles-${index}`;
+                    header.insertBefore(particlesContainer, header.firstChild);
+                    console.log(`Added particles container to header ${index}`);
+                }
+                
+                // Create particles
+                createParticles(`particles-${index}`, 25);
+                console.log(`Created particles for header ${index}`);
+                
+                // Create ornaments
+                createOrnaments(header, index);
+                console.log(`Created ornaments for header ${index}`);
+            });
+        }
+
+        // Kinetic Scroll Effects for Section Headers
+        function initKineticScrollEffects() {
+            const sectionHeaders = document.querySelectorAll('.section-header');
+            const isMobile = window.innerWidth <= 768;
+            const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            let ticking = false;
+
+            // Skip kinetic effects on mobile or for users who prefer reduced motion
+            if (isMobile || isReducedMotion) {
+                return;
+            }
+
+            function updateTransforms() {
+                sectionHeaders.forEach(header => {
+                    const rect = header.getBoundingClientRect();
+                    const windowHeight = window.innerHeight;
+                    const headerCenter = rect.top + rect.height / 2;
+                    const scrollProgress = (windowHeight - headerCenter) / windowHeight;
+                    
+                    // Only apply effects when header is in viewport
+                    if (scrollProgress > 0 && scrollProgress < 1) {
+                        const title = header.querySelector('.section-title');
+                        const subtitle = header.querySelector('.section-subtitle');
+                        
+                        // Calculate transform values based on scroll progress
+                        const titleRotateX = (scrollProgress - 0.5) * 10; // -5 to 5 degrees
+                        const titleRotateY = (scrollProgress - 0.5) * 5;  // -2.5 to 2.5 degrees
+                        const subtitleRotateX = (scrollProgress - 0.5) * 8; // -4 to 4 degrees
+                        
+                        if (title) {
+                            title.style.transform = `translateY(var(--text-lift-base)) translateZ(50px) rotateX(${titleRotateX}deg) rotateY(${titleRotateY}deg)`;
+                        }
+                        
+                        if (subtitle) {
+                            subtitle.style.transform = `translateZ(30px) rotateX(${subtitleRotateX}deg)`;
+                        }
+                    }
+                });
+                
+                ticking = false;
+            }
+
+            function onScroll() {
+                if (!ticking) {
+                    requestAnimationFrame(updateTransforms);
+                    ticking = true;
+                }
+            }
+
+            // Throttled scroll listener
+            window.addEventListener('scroll', onScroll, { passive: true });
+            
+            // Initial call
+            updateTransforms();
+        }
+
+        // Touch interaction optimization for section headers
+        function initTouchInteractions() {
+            const sectionHeaders = document.querySelectorAll('.section-header');
+            
+            sectionHeaders.forEach(header => {
+                const title = header.querySelector('.section-title');
+                const subtitle = header.querySelector('.section-subtitle');
+                
+                // Add touch-friendly hover effects
+                header.addEventListener('touchstart', function() {
+                    if (title) {
+                        title.style.transform = 'translateY(var(--text-lift-hover)) scale(1.02)';
+                    }
+                    if (subtitle) {
+                        subtitle.style.opacity = '1';
+                    }
+                }, { passive: true });
+                
+                header.addEventListener('touchend', function() {
+                    if (title) {
+                        title.style.transform = 'translateY(var(--text-lift-base))';
+                    }
+                    if (subtitle) {
+                        subtitle.style.opacity = '0.85';
+                    }
+                }, { passive: true });
+                
+                // Prevent touch delay on mobile
+                header.style.touchAction = 'manipulation';
+            });
+        }
+
+        // Comprehensive Lazy Loading System
+        function initLazyLoading() {
+            console.log('🚀 Initializing Lazy Loading System...');
+            
+            // Check if IntersectionObserver is supported
+            if ('IntersectionObserver' in window) {
+                // Create observer for lazy loading
+                const lazyObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const lazyElement = entry.target;
+                            loadElement(lazyElement);
+                            observer.unobserve(lazyElement);
+                        }
+                    });
+                }, {
+                    rootMargin: '0px 0px 100px 0px', // Start loading 100px before entering viewport
+                    threshold: 0.01
+                });
+
+                // Observe all lazy-loaded elements
+                document.querySelectorAll('.lazy-loaded').forEach(element => {
+                    lazyObserver.observe(element);
+                });
+                
+                console.log('✅ Lazy Loading Observer initialized');
+            } else {
+                // Fallback for older browsers
+                console.log('⚠️ IntersectionObserver not supported, loading all images immediately');
+                document.querySelectorAll('.lazy-loaded').forEach(loadElement);
+            }
+
+            // Function to load an element
+            function loadElement(element) {
+                if (element.tagName === 'IMG' && element.dataset.src) {
+                    const container = element.closest('.lazy-container');
+                    const spinner = container?.querySelector('.lazy-spinner');
+                    const placeholder = container?.querySelector('.lazy-placeholder');
+
+                    // Create new image for preloading
+                    const img = new Image();
+                    img.src = element.dataset.src;
+                    
+                    img.onload = () => {
+                        // Image loaded successfully
+                        element.src = element.dataset.src;
+                        element.classList.add('loaded');
+                        
+                        // Remove spinner and placeholder with delay for smooth transition
+                        setTimeout(() => {
+                            if (spinner) spinner.style.display = 'none';
+                            if (placeholder) placeholder.style.display = 'none';
+                        }, 500);
+                        
+                        console.log('✅ Image loaded:', element.dataset.src);
+                    };
+
+                    img.onerror = () => {
+                        // Handle loading error gracefully
+                        console.error('❌ Error loading image:', element.dataset.src);
+                        element.alt = 'Image could not be loaded';
+                        if (spinner) spinner.style.display = 'none';
+                        if (placeholder) {
+                            placeholder.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; height: 100%; color: var(--light-accent); font-size: 14px;">Image unavailable</div>';
+                        }
+                    };
+                }
+            }
+        }
+
+        // Enhanced image loading with WebP support
+        function createLazyImage(src, alt, className = '', width = null, height = null) {
+            const container = document.createElement('div');
+            container.className = 'lazy-container';
+            
+            // Add placeholder
+            const placeholder = document.createElement('div');
+            placeholder.className = 'lazy-placeholder';
+            container.appendChild(placeholder);
+            
+            // Add spinner
+            const spinner = document.createElement('div');
+            spinner.className = 'lazy-spinner';
+            container.appendChild(spinner);
+            
+            // Create image with lazy loading
+            const img = document.createElement('img');
+            img.className = `lazy-loaded ${className}`;
+            img.alt = alt;
+            img.dataset.src = src;
+            img.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='${width || 300}' height='${height || 200}' viewBox='0 0 ${width || 300} ${height || 200}'%3E%3C/svg%3E`;
+            
+            if (width) img.width = width;
+            if (height) img.height = height;
+            
+            container.appendChild(img);
+            return container;
+        }
+
+        // Initialize particles when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎨 Creative Section Headings: Initializing...');
+            
+            // Initialize lazy loading first
+            initLazyLoading();
+            
+            // Add a small delay to ensure all elements are rendered
+            setTimeout(() => {
+                initSectionParticles();
+                initKineticScrollEffects();
+                initTouchInteractions();
+                
+                console.log('✅ Creative Section Headings: All systems initialized!');
+            }, 500);
+            
+            // Reinitialize particles on window resize for responsive behavior
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(initSectionParticles, 300);
+            });
+        });
     </script>
 </body>
 </html>
