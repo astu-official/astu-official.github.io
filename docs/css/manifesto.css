@@ -1,0 +1,534 @@
+     :root {
+            /* Light Theme */
+            --light-bg: #f8f8f8;
+            --light-text: #222;
+            --light-accent: #4a7c59;
+            --light-secondary: #8e6e63;
+            
+            /* Dark Theme */
+            --dark-bg: #121212;
+            --dark-text: #e0e0e0;
+            --dark-accent: #2ecc71;
+            --dark-secondary: #7d5ba6;
+            
+            /* Common */
+            --transition: all 0.3s ease;
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.15);
+            --border-radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+
+        /* Enhanced Manifesto Section */
+        .manifesto-section {
+            position: relative;
+            min-height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 0;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(142, 110, 99, 0.1) 0%, rgba(46, 125, 50, 0.1) 100%);
+        }
+
+        body.dark-mode .manifesto-section {
+            background: linear-gradient(135deg, rgba(13, 31, 13, 0.8) 0%, rgba(39, 174, 96, 0.2) 100%);
+        }
+
+        .manifesto-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Animated Background Elements */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            background: var(--light-accent);
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+            animation-duration: 20s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            background: var(--light-secondary);
+            top: 60%;
+            right: 10%;
+            animation-delay: -5s;
+            animation-duration: 25s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            background: var(--light-accent);
+            bottom: 20%;
+            left: 20%;
+            animation-delay: -10s;
+            animation-duration: 18s;
+        }
+
+        body.dark-mode .floating-element {
+            opacity: 0.15;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            33% {
+                transform: translateY(-30px) rotate(120deg);
+            }
+            66% {
+                transform: translateY(20px) rotate(240deg);
+            }
+        }
+
+        /* Scroll Progress Indicator */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .scroll-progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(to right, var(--light-accent), var(--light-secondary));
+            transition: width 0.3s ease;
+        }
+
+        body.dark-mode .scroll-progress-bar {
+            background: linear-gradient(to right, var(--dark-accent), var(--dark-secondary));
+        }
+
+        /* Manifesto Content */
+        .manifesto-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 1s ease, opacity 1s ease;
+        }
+
+        .manifesto-content.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        body.dark-mode .manifesto-content {
+            background: rgba(26, 42, 26, 0.9);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .manifesto-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--light-accent), var(--light-secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 1.5s ease;
+        }
+
+        .manifesto-content.animate::before {
+            transform: scaleX(1);
+        }
+
+        .manifesto-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: var(--light-accent);
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .manifesto-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        body.dark-mode .manifesto-title {
+            color: var(--dark-accent);
+        }
+
+        .manifesto-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--light-accent);
+        }
+
+        body.dark-mode .manifesto-title::after {
+            background: var(--dark-accent);
+        }
+
+        /* Typography Effects */
+        .manifesto-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .manifesto-text p {
+            margin-bottom: 25px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .manifesto-text p.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(142, 110, 99, 0.2) 0%, rgba(46, 125, 50, 0.2) 100%);
+            padding: 0 8px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--light-accent);
+            transition: width 0.3s ease;
+        }
+
+        .highlight:hover::after {
+            width: 100%;
+        }
+
+        body.dark-mode .highlight {
+            background: linear-gradient(120deg, rgba(46, 204, 113, 0.2) 0%, rgba(39, 174, 96, 0.2) 100%);
+        }
+
+        /* Signature */
+        .manifesto-signature {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-style: italic;
+            color: var(--light-accent);
+            margin: 50px 0 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .manifesto-signature.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        body.dark-mode .manifesto-signature {
+            color: var(--dark-accent);
+        }
+
+        /* Controls */
+        .manifesto-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .manifesto-controls.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .share-btn, .theme-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: var(--light-accent);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        body.dark-mode .share-btn, 
+        body.dark-mode .theme-btn {
+            background: var(--dark-accent);
+            color: var(--dark-bg);
+        }
+
+        .share-btn:hover, .theme-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+    
+        /* Social Sharing */
+        .share-options {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .share-options.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .share-container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        body.dark-mode .share-container {
+            background: var(--dark-bg);
+            color: var(--dark-text);
+        }
+
+        .share-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--light-accent);
+        }
+
+        body.dark-mode .share-title {
+            color: var(--dark-accent);
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .share-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f0f0;
+            color: #333;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .share-button:hover {
+            transform: translateY(-3px);
+        }
+
+        .share-button.facebook { background: #3b5998; color: white; }
+        .share-button.twitter { background: #1da1f2; color: white; }
+        .share-button.linkedin { background: #0077b5; color: white; }
+        .share-button.whatsapp { background: #25d366; color: white; }
+
+        .close-share {
+            padding: 10px 20px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-share:hover {
+            background: #c0392b;
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--light-accent);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: var(--shadow-md);
+        }
+
+        .scroll-indicator.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        body.dark-mode .scroll-indicator {
+            background: var(--dark-accent);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .manifesto-content {
+                padding: 40px 20px;
+            }
+            
+            .manifesto-title {
+                font-size: 2.5rem;
+            }
+            
+            .manifesto-text {
+                font-size: 1.5rem;
+            }
+            
+            .manifesto-signature {
+                font-size: 1.8rem;
+            }
+            
+            .manifesto-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .share-btn, .theme-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .manifesto-title {
+                font-size: 2rem;
+            }
+            
+            .manifesto-text {
+                font-size: 1.3rem;
+            }
+            
+            .manifesto-signature {
+                font-size: 1.6rem;
+            }
+            
+            .scroll-indicator {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        /* Reduced motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            .floating-element,
+            .manifesto-title,
+            .manifesto-text p,
+            .manifesto-signature,
+            .manifesto-controls,
+            .manifesto-content {
+                animation: none !important;
+                transition: none !important;
+            }
+            
+            .share-btn:hover, .theme-btn:hover {
+                transform: none;
+            }
+        }
