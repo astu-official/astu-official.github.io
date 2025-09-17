@@ -1,0 +1,319 @@
+        :root {
+            --primary-light: #4a7c59;
+            --secondary-light: #8e6e63;
+            --accent-light: #2ecc71;
+            --primary-dark: #2c5539;
+            --secondary-dark: #6d4c41;
+            --accent-dark: #27ae60;
+            --glass-bg-light: rgba(255, 255, 255, 0.9);
+            --glass-border-light: rgba(255, 255, 255, 0.2);
+            --glass-shadow-light: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --glass-bg-dark: rgba(30, 30, 30, 0.9);
+            --glass-border-dark: rgba(255, 255, 255, 0.1);
+            --glass-shadow-dark: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --text-light: #ffffff;
+            --text-dark: #222222;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            min-height: 200vh; /* For demo purposes */
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            transition: background 0.5s ease;
+        }
+
+        body.dark-mode {
+            background: linear-gradient(135deg, #232526 0%, #414345 100%);
+        }
+
+        /* Liquid FAB Wrapper */
+        .liquid-fab-wrapper {
+            position: fixed;
+            bottom: 40px;
+            left: 40px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+        }
+
+        /* Main FAB Button */
+        .liquid-fab {
+            width: 70px;
+            height: 70px;
+            border: none;
+            background: transparent;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            overflow: visible;
+            transition: var(--transition);
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+        }
+
+        /* Liquid Blob Background */
+        .liquid-blob {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            background: linear-gradient(135deg, var(--primary-light), var(--secondary-light));
+            transition: var(--transition);
+            animation: blob-morph 8s ease-in-out infinite both;
+        }
+
+        body.dark-mode .liquid-blob {
+            background: linear-gradient(135deg, var(--accent-dark), var(--secondary-dark));
+        }
+
+        /* FAB Icon */
+        .fab-icon {
+            position: absolute;
+            font-size: 1.8rem;
+            color: white;
+            z-index: 2;
+            transition: var(--transition);
+        }
+
+        /* Ripple Effect */
+        .fab-ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(0);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .ripple-effect {
+            animation: ripple 0.6s linear;
+        }
+
+        /* Breathing Pulse Effect */
+        @keyframes breathing-pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(74, 124, 89, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(74, 124, 89, 0);
+            }
+        }
+
+        .liquid-fab:not(.active) {
+            animation: breathing-pulse 3s ease-in-out infinite;
+        }
+
+        body.dark-mode .liquid-fab:not(.active) {
+            animation: breathing-pulse-dark 3s ease-in-out infinite;
+        }
+
+        @keyframes breathing-pulse-dark {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
+            }
+        }
+
+        /* Liquid FAB Menu */
+        .liquid-fab-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        /* FAB Menu Items */
+        .fab-item {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border: none;
+            background: var(--glass-bg-light);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border-light);
+            color: var(--text-dark);
+            font-size: 1.3rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: scale(0) rotate(-180deg);
+            transition: var(--transition);
+            position: relative;
+            filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.15));
+        }
+
+        body.dark-mode .fab-item {
+            background: var(--glass-bg-dark);
+            border: 1px solid var(--glass-border-dark);
+            color: var(--text-light);
+        }
+
+        /* Item Labels */
+        .item-label {
+            position: absolute;
+            right: 65px;
+            background: var(--glass-bg-light);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-dark);
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(10px);
+            transition: var(--transition);
+            pointer-events: none;
+            filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.1));
+            border: 1px solid var(--glass-border-light);
+        }
+
+        body.dark-mode .item-label {
+            background: var(--glass-bg-dark);
+            color: var(--text-light);
+            border: 1px solid var(--glass-border-dark);
+        }
+
+        .fab-item:hover .item-label {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Active States */
+        .liquid-fab-wrapper.active .liquid-blob {
+            border-radius: 50%;
+            animation: none;
+        }
+
+        .liquid-fab-wrapper.active .fab-icon {
+            transform: rotate(135deg);
+        }
+
+        .liquid-fab-wrapper.active .liquid-fab-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .liquid-fab-wrapper.active .fab-item {
+            transform: scale(1) rotate(0);
+        }
+
+        /* Staggered animation for menu items */
+        .liquid-fab-wrapper.active .fab-item:nth-child(1) {
+            transition-delay: 0.05s;
+        }
+        .liquid-fab-wrapper.active .fab-item:nth-child(2) {
+            transition-delay: 0.1s;
+        }
+        .liquid-fab-wrapper.active .fab-item:nth-child(3) {
+            transition-delay: 0.15s;
+        }
+        .liquid-fab-wrapper.active .fab-item:nth-child(4) {
+            transition-delay: 0.2s;
+        }
+        .liquid-fab-wrapper.active .fab-item:nth-child(5) {
+            transition-delay: 0.25s;
+        }
+
+        /* Hover effects */
+        .fab-item:hover {
+            transform: scale(1.15) translateY(-3px) !important;
+            filter: drop-shadow(0 5px 12px rgba(0, 0, 0, 0.2));
+        }
+
+        .liquid-fab:hover .liquid-blob {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        /* Animations */
+        @keyframes blob-morph {
+            0% {
+                border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            }
+            50% {
+                border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+            }
+            100% {
+                border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            }
+        }
+
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .liquid-fab-wrapper {
+                bottom: 20px;
+                left: 20px;
+            }
+            
+            .liquid-fab {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .fab-icon {
+                font-size: 1.5rem;
+            }
+            
+            .fab-item {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .item-label {
+                right: 55px;
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .liquid-fab-wrapper {
+                bottom: 15px;
+                left: 15px;
+            }
+            
+            .liquid-fab {
+                width: 55px;
+                height: 55px;
+            }
+            
+            .fab-item {
+                width: 45px;
+                height: 45px;
+            }
+        }
