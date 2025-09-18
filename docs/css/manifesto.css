@@ -1,4 +1,4 @@
-     :root {
+        :root {
             /* Light Theme */
             --light-bg: #f8f8f8;
             --light-text: #222;
@@ -41,11 +41,11 @@
         /* Enhanced Manifesto Section */
         .manifesto-section {
             position: relative;
-            min-height: auto;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 50px 0;
+            padding: 100px 0;
             overflow: hidden;
             background: linear-gradient(135deg, rgba(142, 110, 99, 0.1) 0%, rgba(46, 125, 50, 0.1) 100%);
         }
@@ -161,8 +161,8 @@
             box-shadow: var(--shadow-lg);
             position: relative;
             overflow: hidden;
-            transform: translateY(20px);
-            opacity: 0;
+            transform: translateY(0); /* Changed from 50px to 0 */
+            opacity: 1; /* Changed from 0 to 1 */
             transition: transform 1s ease, opacity 1s ease;
         }
 
@@ -201,8 +201,8 @@
             margin-bottom: 50px;
             position: relative;
             display: inline-block;
-            opacity: 0;
-            transform: translateY(30px);
+            opacity: 1; /* Changed from 0 to 1 */
+            transform: translateY(0); /* Changed from 30px to 0 */
             transition: opacity 1s ease, transform 1s ease;
         }
 
@@ -242,8 +242,8 @@
 
         .manifesto-text p {
             margin-bottom: 25px;
-            opacity: 0;
-            transform: translateY(20px);
+            opacity: 1; /* Changed from 0 to 1 */
+            transform: translateY(0); /* Changed from 20px to 0 */
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
@@ -287,8 +287,8 @@
             font-style: italic;
             color: var(--light-accent);
             margin: 50px 0 40px;
-            opacity: 0;
-            transform: translateY(20px);
+            opacity: 1; /* Changed from 0 to 1 */
+            transform: translateY(0); /* Changed from 20px to 0 */
             transition: opacity 1s ease, transform 1s ease;
         }
 
@@ -307,8 +307,8 @@
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
-            opacity: 0;
-            transform: translateY(20px);
+            opacity: 1; /* Changed from 0 to 1 */
+            transform: translateY(0); /* Changed from 20px to 0 */
             transition: opacity 1s ease, transform 1s ease;
         }
 
@@ -345,7 +345,19 @@
             box-shadow: var(--shadow-md);
         }
 
-    
+        /* Theme Toggle */
+        .theme-btn .icon-sun {
+            display: none;
+        }
+
+        body.dark-mode .theme-btn .icon-moon {
+            display: none;
+        }
+
+        body.dark-mode .theme-btn .icon-sun {
+            display: inline;
+        }
+
         /* Social Sharing */
         .share-options {
             position: fixed;
