@@ -1,4 +1,4 @@
-  document.addEventListener('DOMContentLoaded', function() {
+ document.addEventListener('DOMContentLoaded', function() {
             const shareBtn = document.getElementById('share-btn');
             const closeShare = document.getElementById('close-share');
             const shareOptions = document.getElementById('share-options');
@@ -50,8 +50,7 @@
                     
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
-                        // Calculate the scroll position considering the header height
-                        const headerHeight = 100; // Adjust based on your actual header height
+                        const headerHeight = 100;
                         const elementPosition = targetElement.getBoundingClientRect().top;
                         const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
                         
