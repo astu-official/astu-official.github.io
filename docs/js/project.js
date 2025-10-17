@@ -1,10 +1,14 @@
-       document.addEventListener('DOMContentLoaded', function() {
+     document.addEventListener('DOMContentLoaded', function() {
             // Project modal functionality
             const projectCards = document.querySelectorAll('.project-card');
             const projectButtons = document.querySelectorAll('.project-cta');
             const projectModals = document.querySelectorAll('.project-modal');
             const closeButtons = document.querySelectorAll('.modal-close');
             const collaborateButtons = document.querySelectorAll('.modal-action-btn');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const searchInput = document.getElementById('projectSearch');
+            const noResults = document.getElementById('noResults');
+            const projectsScroll = document.getElementById('projectsScroll');
             
             // Function to open modal
             function openModal(projectId) {
@@ -94,17 +98,16 @@
             });
             
             // Horizontal scroll functionality
-            const scrollContainer = document.getElementById('projectsScroll');
             const scrollLeft = document.getElementById('scrollLeft');
             const scrollRight = document.getElementById('scrollRight');
             
-            if (scrollLeft && scrollRight && scrollContainer) {
+            if (scrollLeft && scrollRight && projectsScroll) {
                 scrollLeft.addEventListener('click', function() {
-                    scrollContainer.scrollBy({ left: -380, behavior: 'smooth' });
+                    projectsScroll.scrollBy({ left: -380, behavior: 'smooth' });
                 });
                 
                 scrollRight.addEventListener('click', function() {
-                    scrollContainer.scrollBy({ left: 380, behavior: 'smooth' });
+                    projectsScroll.scrollBy({ left: 380, behavior: 'smooth' });
                 });
             }
             
@@ -129,16 +132,72 @@
                 });
             });
             
+            // Filter functionality
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    filterProjects(filter);
+                });
+            });
+            
+            // Search functionality
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    filterProjects();
+                });
+            }
+            
+            // Filter projects based on selected filter and search term
+            function filterProjects(filter = 'all') {
+                const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+                let visibleCount = 0;
+                
+                projectCards.forEach(card => {
+                    const status = card.getAttribute('data-status');
+                    const categories = card.getAttribute('data-categories');
+                    const title = card.querySelector('.project-title').textContent.toLowerCase();
+                    const description = card.querySelector('.project-desc').textContent.toLowerCase();
+                    
+                    const matchesFilter = filter === 'all' || status === filter;
+                    const matchesSearch = searchTerm === '' || 
+                                         title.includes(searchTerm) || 
+                                         description.includes(searchTerm) ||
+                                         (categories && categories.includes(searchTerm));
+                    
+                    if (matchesFilter && matchesSearch) {
+                        card.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Show no results message if no projects are visible
+                if (noResults) {
+                    if (visibleCount === 0) {
+                        noResults.style.display = 'block';
+                        projectsScroll.style.display = 'none';
+                    } else {
+                        noResults.style.display = 'none';
+                        projectsScroll.style.display = 'flex';
+                    }
+                }
+            }
+            
             // Swipe functionality for mobile
             let touchStartX = 0;
             let touchEndX = 0;
             
-            if (scrollContainer) {
-                scrollContainer.addEventListener('touchstart', e => {
+            if (projectsScroll) {
+                projectsScroll.addEventListener('touchstart', e => {
                     touchStartX = e.changedTouches[0].screenX;
                 }, false);
                 
-                scrollContainer.addEventListener('touchend', e => {
+                projectsScroll.addEventListener('touchend', e => {
                     touchEndX = e.changedTouches[0].screenX;
                     handleSwipe();
                 }, false);
@@ -149,12 +208,12 @@
                 
                 if (touchEndX < touchStartX - swipeThreshold) {
                     // Swipe left
-                    scrollContainer.scrollBy({ left: 380, behavior: 'smooth' });
+                    projectsScroll.scrollBy({ left: 380, behavior: 'smooth' });
                 }
                 
                 if (touchEndX > touchStartX + swipeThreshold) {
                     // Swipe right
-                    scrollContainer.scrollBy({ left: -380, behavior: 'smooth' });
+                    projectsScroll.scrollBy({ left: -380, behavior: 'smooth' });
                 }
             }
             
@@ -197,6 +256,3 @@
                 });
             }
         });
-  const projectButtons = document.querySelectorAll('.project-cta');
-const projectModals = document.querySelectorAll('.project-modal');
-
