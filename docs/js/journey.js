@@ -1,31 +1,32 @@
-     document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality (if you have a theme toggle elsewhere)
             const themeToggle = document.getElementById('theme-toggle');
-            
-            // Theme toggle functionality
-            themeToggle.addEventListener('click', function() {
-                document.body.classList.toggle('dark-mode');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    document.body.classList.toggle('dark-mode');
+                    
+                    // Update icon
+                    const icon = themeToggle.querySelector('i');
+                    if (document.body.classList.contains('dark-mode')) {
+                        icon.classList.remove('fa-moon');
+                        icon.classList.add('fa-sun');
+                    } else {
+                        icon.classList.remove('fa-sun');
+                        icon.classList.add('fa-moon');
+                    }
+                    
+                    // Save theme preference to localStorage
+                    const isDarkMode = document.body.classList.contains('dark-mode');
+                    localStorage.setItem('darkMode', isDarkMode);
+                });
                 
-                // Update icon
-                const icon = themeToggle.querySelector('i');
-                if (document.body.classList.contains('dark-mode')) {
+                // Check for saved theme preference
+                if (localStorage.getItem('darkMode') === 'true') {
+                    document.body.classList.add('dark-mode');
+                    const icon = themeToggle.querySelector('i');
                     icon.classList.remove('fa-moon');
                     icon.classList.add('fa-sun');
-                } else {
-                    icon.classList.remove('fa-sun');
-                    icon.classList.add('fa-moon');
                 }
-                
-                // Save theme preference to localStorage
-                const isDarkMode = document.body.classList.contains('dark-mode');
-                localStorage.setItem('darkMode', isDarkMode);
-            });
-            
-            // Check for saved theme preference
-            if (localStorage.getItem('darkMode') === 'true') {
-                document.body.classList.add('dark-mode');
-                const icon = themeToggle.querySelector('i');
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
             }
 
             // Reveal intro elements on load
@@ -48,6 +49,7 @@
             // Handle "Begin Your Journey" button click
             const beginJourneyBtn = document.getElementById('beginJourneyBtn');
             const journeySection = document.getElementById('journey');
+            const backToIntroBtn = document.getElementById('backToIntro');
             
             beginJourneyBtn.addEventListener('click', function() {
                 // Hide intro section with animation
@@ -58,6 +60,7 @@
                 setTimeout(() => {
                     document.querySelector('.journey-intro').style.display = 'none';
                     journeySection.classList.add('visible');
+                    backToIntroBtn.classList.add('visible');
                     
                     // Animate timeline items in sequence
                     const timelineItems = document.querySelectorAll('.timeline-item');
@@ -67,13 +70,41 @@
                         }, 300 * index);
                     });
                 }, 800);
+                
+                // Update URL hash
+                window.location.hash = 'journey';
+            });
+            
+            // Handle back to intro button
+            backToIntroBtn.addEventListener('click', function() {
+                // Hide journey section with animation
+                journeySection.style.opacity = '0';
+                journeySection.style.transition = 'opacity 0.8s ease';
+                backToIntroBtn.classList.remove('visible');
+                
+                // Show intro section after a short delay
+                setTimeout(() => {
+                    journeySection.classList.remove('visible');
+                    document.querySelector('.journey-intro').style.display = 'flex';
+                    
+                    setTimeout(() => {
+                        document.querySelector('.journey-intro').style.opacity = '1';
+                    }, 50);
+                }, 800);
+                
+                // Remove URL hash
+                history.replaceState(null, null, ' ');
             });
             
             // Expand/collapse functionality for timeline items
             const timelineItems = document.querySelectorAll('.timeline-item');
             
             timelineItems.forEach(item => {
-                item.addEventListener('click', function() {
+                const expandIndicator = item.querySelector('.expand-indicator');
+                
+                expandIndicator.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    
                     // Close all other expanded items
                     timelineItems.forEach(otherItem => {
                         if (otherItem !== item && otherItem.classList.contains('expanded')) {
@@ -82,7 +113,22 @@
                     });
                     
                     // Toggle current item
-                    this.classList.toggle('expanded');
+                    item.classList.toggle('expanded');
+                });
+                
+                // Also allow clicking anywhere on the item to expand (but not on the year badge)
+                item.addEventListener('click', function(e) {
+                    if (!e.target.closest('.timeline-year')) {
+                        // Close all other expanded items
+                        timelineItems.forEach(otherItem => {
+                            if (otherItem !== item && otherItem.classList.contains('expanded')) {
+                                otherItem.classList.remove('expanded');
+                            }
+                        });
+                        
+                        // Toggle current item
+                        item.classList.toggle('expanded');
+                    }
                 });
             });
             
@@ -101,4 +147,9 @@
                     floater.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
                 });
             });
+            
+            // Handle hash navigation
+            if (window.location.hash === '#journey') {
+                beginJourneyBtn.click();
+            }
         });
